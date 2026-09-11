@@ -33,7 +33,7 @@ public class XP : MonoBehaviour
             nextLevelXP += 16;
             LevelUp();
         }
-        else if (currentXP == nextLevelXP && playerLevel < 40 && playerLevel > 20)
+        else if (currentXP == nextLevelXP && playerLevel < 40 && playerLevel >= 20)
         {
             nextLevelXP += 13;
             LevelUp();

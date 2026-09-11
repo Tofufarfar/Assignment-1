@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        weapon.transform.RotateAround(transform.position, Vector3.forward, 360 * Time.deltaTime);
+        weapon.transform.RotateAround(transform.position, Vector3.forward, 90 * Time.deltaTime);
     }
 
     // Update is called once per frame
@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("XPGem") && !weapon.CompareTag("Weapon"))
-        {
+        if (collision.gameObject.CompareTag("XPGem"))
+        { 
             XP xp = GetComponent<XP>();
             xp.CalculateXP();
             Destroy(collision.gameObject);

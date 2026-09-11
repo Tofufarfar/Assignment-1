@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Weapon"))
         {
+            // TODO : Add damage value to weapon and use it here instead of 1f
             health.TakeDamage(1f);
             if (health.CurrentHP <= 0)
             {
