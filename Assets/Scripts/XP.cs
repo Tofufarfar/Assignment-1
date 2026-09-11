@@ -3,17 +3,15 @@ using UnityEngine;
 
 public class XP : MonoBehaviour
 {
-    public int currentXP;
-    public int playerLevel;
-    public int nextLevelXP;
+    public int currentXP { get; private set; } = 0;
+    public int playerLevel { get; private set; } = 1    ;
+    public int nextLevelXP { get; private set; } = 5;
 
-    public event Action XPGained;
-    public event Action playerLevelUp;
+    public event Action OnXPGained;
+    public event Action OnplayerLevelUp;
     private void Awake()
     {
-        currentXP = 0;
-        playerLevel = 1;
-        nextLevelXP = 5;
+        
     }
     void Start()
     {
@@ -29,7 +27,7 @@ public class XP : MonoBehaviour
     public void CalculateXP()
     {
         currentXP++;
-        XPGained?.Invoke();
+        OnXPGained?.Invoke();
         if (currentXP == nextLevelXP && playerLevel >= 40)
         {
             nextLevelXP += 16;
@@ -52,6 +50,6 @@ public class XP : MonoBehaviour
     void LevelUp()
     {
         playerLevel++;
-        playerLevelUp?.Invoke();
+        OnplayerLevelUp?.Invoke();
     }
 }

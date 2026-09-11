@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private float speed = 5f;
     Rigidbody2D rb;
     Health health;
-    public GameObject weapon;
+    [SerializeField] private GameObject weapon;
 
     private void Awake()
     {
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("XPGem"))
+        if (collision.gameObject.CompareTag("XPGem") && !weapon.CompareTag("Weapon"))
         {
             XP xp = GetComponent<XP>();
             xp.CalculateXP();

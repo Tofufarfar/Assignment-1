@@ -3,27 +3,27 @@ using UnityEngine.UI;
 
 public class XPBar : MonoBehaviour
 {
-    Slider ExperienceBar;
-    XP XP;
+    private Slider ExperienceBar;
+    private XP xp;
 
     private void Awake()
     {
         ExperienceBar = GetComponent<Slider>();
-        XP = GetComponentInParent<XP>();
-        ExperienceBar.maxValue = XP.nextLevelXP;
-        ExperienceBar.value = XP.currentXP;
+        xp = GetComponentInParent<XP>();
+        ExperienceBar.maxValue = xp.nextLevelXP;
+        ExperienceBar.value = xp.currentXP;
     }
 
     private void OnEnable()
     {
-        XP.playerLevelUp += ResetXPBar;
-        XP.XPGained += SetXPBar;
+        xp.OnplayerLevelUp += ResetXPBar;
+        xp.OnXPGained += SetXPBar;
     }
 
     private void OnDisable()
     {
-        XP.playerLevelUp -= ResetXPBar;
-        XP.XPGained -= ResetXPBar;
+        xp.OnplayerLevelUp -= ResetXPBar;
+        xp.OnXPGained -= SetXPBar;
     }
     // Update is called once per frame
     void Update()
@@ -33,13 +33,13 @@ public class XPBar : MonoBehaviour
 
     void SetXPBar()
     {
-        ExperienceBar.value = XP.currentXP;
+        ExperienceBar.value = xp.currentXP;
     }
 
     void ResetXPBar()
     {
-        ExperienceBar.maxValue = XP.nextLevelXP;
-        ExperienceBar.minValue = XP.currentXP;
+        ExperienceBar.maxValue = xp.nextLevelXP;
+        ExperienceBar.minValue = xp.currentXP;
     }
 
 }
