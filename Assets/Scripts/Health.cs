@@ -30,4 +30,10 @@ public class Health : MonoBehaviour
             OnDeath = null;
         }
     }
+
+    public void FullHeal()
+    {
+        CurrentHP = MaxHP;
+        HPChanged?.Invoke(CurrentHP);
+    }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 public class XP : MonoBehaviour
 {
     public int currentXP { get; private set; } = 0;
-    public int playerLevel { get; private set; } = 1    ;
+    public int playerLevel { get; private set; } = 1;
     public int nextLevelXP { get; private set; } = 5;
 
     public event Action OnXPGained;
-    public event Action OnplayerLevelUp;
+    public event Action OnPlayerLevelUp;
     private void Awake()
     {
         
@@ -50,6 +50,6 @@ public class XP : MonoBehaviour
     void LevelUp()
     {
         playerLevel++;
-        OnplayerLevelUp?.Invoke();
+        OnPlayerLevelUp?.Invoke();
     }
 }

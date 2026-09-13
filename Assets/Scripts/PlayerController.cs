@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         health = GetComponent<Health>();
+        moveAction = InputSystem.actions.FindAction("Move");
     }
 
     void Start()
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        moveAction = InputSystem.actions.FindAction("Move");
+        
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
         rb.linearVelocity = moveValue * speed;
         

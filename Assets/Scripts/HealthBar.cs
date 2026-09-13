@@ -3,25 +3,29 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    Slider HPBar;
-    Health HP;
+    Slider hpBar;
+    Health hp;
+    XP xp;
 
     private void Awake()
     {
-        HPBar = GetComponent<Slider>();
-        HP = GetComponentInParent<Health>();
-        HPBar.maxValue = HP.MaxHP;
-        HPBar.value = HP.MaxHP;
+        hpBar = GetComponent<Slider>();
+        hp = GetComponentInParent<Health>();
+        xp = GetComponentInParent<XP>();
+        hpBar.maxValue = hp.MaxHP;
+        hpBar.value = hp.MaxHP;
     }
 
     private void OnEnable()
     {
-        HP.HPChanged += SetHPBar;
+        hp.HPChanged += SetHPBar;
+        xp.OnPlayerLevelUp += hp.FullHeal;
     }
 
     private void OnDisable()
     {
-       HP.HPChanged -= SetHPBar; 
+       hp.HPChanged -= SetHPBar;
+       xp.OnPlayerLevelUp -= hp.FullHeal;
     }
     // Update is called once per frame
     void Update()
@@ -31,7 +35,7 @@ public class HealthBar : MonoBehaviour
 
     void SetHPBar(float currentHP)
     { 
-        HPBar.value = currentHP;
+        hpBar.value = currentHP;
     }
 
 }

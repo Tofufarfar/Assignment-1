@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,8 @@ public class EnemyAI : MonoBehaviour
     private float speed = 2f;
     Health health;
     public GameObject xpPrefab;
+
+    public Action<int> EnemyDeathScore;
 
     private void Awake()
     {
@@ -35,6 +38,7 @@ public class EnemyAI : MonoBehaviour
             {
                 Destroy(gameObject);
                 Instantiate(xpPrefab, transform.position, xpPrefab.transform.rotation);
+                EnemyDeathScore?.Invoke(100);
             }
         }
         

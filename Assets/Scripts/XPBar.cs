@@ -16,13 +16,13 @@ public class XPBar : MonoBehaviour
 
     private void OnEnable()
     {
-        xp.OnplayerLevelUp += ResetXPBar;
+        xp.OnPlayerLevelUp += ResetXPBar;
         xp.OnXPGained += SetXPBar;
     }
 
     private void OnDisable()
     {
-        xp.OnplayerLevelUp -= ResetXPBar;
+        xp.OnPlayerLevelUp -= ResetXPBar;
         xp.OnXPGained -= SetXPBar;
     }
     // Update is called once per frame
