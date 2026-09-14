@@ -2872,6 +2872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181e522cb43ea3a4b9942aab2485e68e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InGameTimer
+  timer: {fileID: 1170211796}
 --- !u!1001 &1180105161
 PrefabInstance:
   m_ObjectHideFlags: 0
