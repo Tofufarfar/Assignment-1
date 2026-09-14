@@ -1,16 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 public class InGameTimer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] TextMeshProUGUI timer;
+    private float time;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        time += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
+        timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
