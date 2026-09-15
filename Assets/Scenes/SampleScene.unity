@@ -668,6 +668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23da157593428ca4689425711c9cb08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XPBar
+  ExperienceBar: {fileID: 203864579}
+  PlayerLevels: {fileID: 425875110}
 --- !u!1 &205439831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lvl: '
+  m_text: 'Lvl:  1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4237,8 +4239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -164}
-  m_SizeDelta: {x: 129.7423, y: 43.6525}
+  m_AnchoredPosition: {x: 242, y: -189}
+  m_SizeDelta: {x: 210.5601, y: 70.8441}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1834061711
 MonoBehaviour:
@@ -4340,7 +4342,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 17.663393}
+  m_margin: {x: 0, y: 0, z: -5.05114, w: 46.07588}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5106,11 +5108,11 @@ PrefabInstance:
       objectReference: {fileID: 4858010506431399849, guid: 15381ffa5468a25488fd84c3940e9bc6, type: 3}
     - target: {fileID: 7517041590889391513, guid: 7b03244394537894887fcd6483c51afd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.65
+      value: -5.8
       objectReference: {fileID: 0}
     - target: {fileID: 7517041590889391513, guid: 7b03244394537894887fcd6483c51afd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.09
+      value: -3.41
       objectReference: {fileID: 0}
     - target: {fileID: 7517041590889391513, guid: 7b03244394537894887fcd6483c51afd, type: 3}
       propertyPath: m_LocalPosition.z

@@ -1,14 +1,15 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class XPBar : MonoBehaviour
 {
-    private Slider ExperienceBar;
+    [SerializeField] private Slider ExperienceBar;
+    [SerializeField] private TextMeshProUGUI PlayerLevels;
     private XP xp;
 
     private void Awake()
     {
-        ExperienceBar = GetComponent<Slider>();
         xp = GetComponentInParent<XP>();
         ExperienceBar.maxValue = xp.nextLevelXP;
         ExperienceBar.value = xp.currentXP;
@@ -17,12 +18,14 @@ public class XPBar : MonoBehaviour
     private void OnEnable()
     {
         xp.OnPlayerLevelUp += ResetXPBar;
+        xp.OnPlayerLevelUp += IncreasePlayerLevelText;
         xp.OnXPGained += SetXPBar;
     }
 
     private void OnDisable()
     {
         xp.OnPlayerLevelUp -= ResetXPBar;
+        xp.OnPlayerLevelUp -= IncreasePlayerLevelText;
         xp.OnXPGained -= SetXPBar;
     }
     // Update is called once per frame
@@ -42,4 +45,8 @@ public class XPBar : MonoBehaviour
         ExperienceBar.minValue = xp.currentXP;
     }
 
+    void IncreasePlayerLevelText()
+    {
+        PlayerLevels.text = ("Lvl: " + xp.playerLevel);
+    }
 }
