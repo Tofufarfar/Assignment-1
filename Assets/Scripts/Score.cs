@@ -3,21 +3,32 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] EnemyAI enemyAI;
-    private TextMeshProUGUI scoreText;
-    private int score;
+    public static Score instance;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI highScoreText;
+    private int score = 0;
+    private int highScore;
 
     private void Awake()
     {
-        enemyAI = GetComponent<EnemyAI>();
-        scoreText = GetComponent<TextMeshProUGUI>();
+        instance = this;
     }
 
-    private void OnEnable()
+    private void Start()
     {
-            scoreText = score;
-            scoreText += enemyAI.EnemyDeathScore;
-            print(score);
+        highScore = PlayerPrefs.GetInt("highscore", 0);
+        scoreText.text = "Score: " + score.ToString();
+        highScoreText.text = "Highscore: " + highScore.ToString();
+    }
+
+    public void AddScore(int points)
+    {
+        score += points;
+        scoreText.text = "Score: " + score.ToString();
+        if(score > highScore)
+        {
+            PlayerPrefs.SetInt("highscore", score);
+        }
     }
 
 }*/

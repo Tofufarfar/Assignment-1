@@ -38,7 +38,7 @@ public class EnemyAI : MonoBehaviour
             {
                 Destroy(gameObject);
                 Instantiate(xpPrefab, transform.position, xpPrefab.transform.rotation);
-                EnemyDeathScore?.Invoke(100);
+                Score.instance.AddScore(100);
             }
         }
         
