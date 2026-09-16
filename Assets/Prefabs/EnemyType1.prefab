@@ -184,7 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720930a22a04b0b4787d8be6c0e4ee7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  player: {fileID: 0}
+  player: {fileID: 2792173242432382963, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
+  speed: 2
   xpPrefab: {fileID: 4858010506431399849, guid: 15381ffa5468a25488fd84c3940e9bc6, type: 3}
 --- !u!114 &4010426250490717385
 MonoBehaviour:
@@ -198,4 +199,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ba7a87ae501a648b6d7b1caa1b9467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  <MaxHP>k__BackingField: 5
+  <MaxHP>k__BackingField: 1

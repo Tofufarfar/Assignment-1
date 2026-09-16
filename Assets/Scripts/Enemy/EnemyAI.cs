@@ -1,14 +1,16 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player;
-    //Rigidbody2D rb;
-    private float speed = 2f;
+    [SerializeField] Transform player;
+    [SerializeField] float speed = 2f;
+    [SerializeField] private GameObject xpPrefab;
+    Rigidbody2D rb;
     Health health;
-    public GameObject xpPrefab;
+    Vector2 moveDirection;
 
     public Action<int> EnemyDeathScore;
 
@@ -19,13 +21,20 @@ public class EnemyAI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-      //  rb = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        Vector3 direction = (player.position - transform.position).normalized;
+        moveDirection = direction;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate((player.position - transform.position).normalized * speed * Time.deltaTime);
+        rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y) * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
