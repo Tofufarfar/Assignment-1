@@ -346,13 +346,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-=======
-  m_AnchoredPosition: {x: -2.5, y: 0}
-  m_SizeDelta: {x: -5, y: 0}
->>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &14351038
 GameObject:
@@ -3845,6 +3840,7 @@ GameObject:
   - component: {fileID: 1674936601}
   - component: {fileID: 1674936603}
   - component: {fileID: 1674936602}
+  - component: {fileID: 1674936604}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -3971,7 +3967,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674936600}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
 --- !u!114 &1674936604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3986,8 +3981,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Score
   scoreText: {fileID: 1674936602}
   highScoreText: {fileID: 1834061712}
-=======
->>>>>>> Stashed changes
 --- !u!1 &1685638060
 GameObject:
   m_ObjectHideFlags: 0
