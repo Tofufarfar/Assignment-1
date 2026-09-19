@@ -12,6 +12,8 @@ public class EnemyAI : MonoBehaviour
     Health health;
     Vector2 moveDirection;
 
+    private InGameTimer igt;
+
     public Action<int> EnemyDeathScore;
 
     private void Awake()
@@ -23,6 +25,7 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     private void Update()
@@ -45,11 +48,16 @@ public class EnemyAI : MonoBehaviour
             health.TakeDamage(1f);
             if (health.CurrentHP <= 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
                 Instantiate(xpPrefab, transform.position, xpPrefab.transform.rotation);
                 Score.instance.AddScore(100);
             }
         }
+        
+    }
+
+    void IncreasePower()
+    {
         
     }
 

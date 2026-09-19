@@ -4,7 +4,7 @@ using UnityEngine;
 public class InGameTimer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timer;
-    private float time;
+    public static float time { get; private set; }
 
     private void Update()
     {
