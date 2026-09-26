@@ -3636,8 +3636,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   player: {fileID: 2130182106}
-  minRadius: 9
-  maxRadius: 33
+  _minSpawnRadius: 9
+  _maxSpawnRadius: 33
+  _baseSpawnInterval: 1
+  _difficultySetting: 0.1
+  _difficultyInterval: 15
 --- !u!1 &1170211794
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,7 +4038,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c4d9f980f5aeb4384d98294f35907c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  player: {fileID: 0}
 --- !u!114 &1274919399
 MonoBehaviour:
   m_ObjectHideFlags: 0

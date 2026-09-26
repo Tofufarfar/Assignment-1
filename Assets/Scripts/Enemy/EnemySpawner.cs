@@ -4,11 +4,11 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] Transform player;
-    [SerializeField] float minSpawnRadius = 9f;
-    [SerializeField] float maxSpawnRadius = 33f;
-    [SerializeField] float baseSpawnInterval = 1f;
-    [SerializeField] float difficultySetting = 0.1f;
-    [SerializeField] float difficultyInterval = 15f;
+    [SerializeField] float _minSpawnRadius = 9f;
+    [SerializeField] float _maxSpawnRadius = 33f;
+    [SerializeField] float _baseSpawnInterval = 1f;
+    [SerializeField] float _difficultySetting = 0.1f;
+    [SerializeField] float _difficultyInterval = 15f;
     ObjectPooler objectPooler;
     float nextSpawnTime = 0f;
     float currentDifficulty = 1f;
@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        nextDifficultyIncrease = difficultyInterval;
+        nextDifficultyIncrease = _difficultyInterval;
         objectPooler = ObjectPooler.Instance;
 
     }
@@ -29,12 +29,12 @@ public class EnemySpawner : MonoBehaviour
 
         if (currentTime >= nextDifficultyIncrease)
         {
-            currentDifficulty += difficultySetting;
-            nextDifficultyIncrease += difficultyInterval;
+            currentDifficulty += _difficultySetting;
+            nextDifficultyIncrease += _difficultyInterval;
         }
         if (currentTime >= nextSpawnTime)
         {
-            float currentSpawnInterval = baseSpawnInterval / currentDifficulty;
+            float currentSpawnInterval = _baseSpawnInterval / currentDifficulty;
             nextSpawnTime = currentSpawnInterval + currentTime;
             objectPooler.SpawnFromPool("Triangle", SpawnLocation());
         }
@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector2 playerPos = player.position;
         float angle = UnityEngine.Random.Range(0, Mathf.PI * 2f);
-        float radius = Mathf.Sqrt(UnityEngine.Random.Range(minSpawnRadius * minSpawnRadius, maxSpawnRadius * maxSpawnRadius));
+        float radius = Mathf.Sqrt(UnityEngine.Random.Range(_minSpawnRadius * _minSpawnRadius, _maxSpawnRadius * _maxSpawnRadius));
 
         float x = Mathf.Cos(angle) * radius;
         float y = Mathf.Sin(angle) * radius;

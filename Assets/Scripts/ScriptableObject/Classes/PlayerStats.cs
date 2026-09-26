@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+[CreateAssetMenu]
+public class PlayerStats : ScriptableObject
 {
-    public float attackCooldown { get; private set; }
+    public float attackCooldown;
     public float attackSpeed { get; private set; }
     public float moveSpeed { get; private set; }
     public int currentHealth { get; private set; }
