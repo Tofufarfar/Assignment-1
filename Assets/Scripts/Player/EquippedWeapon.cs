@@ -3,7 +3,7 @@ using UnityEngine;
 public class EquippedWeapon : MonoBehaviour
 {
     [SerializeField] private string weaponName;
-    [SerializeField] private string weaponType = "Melee/Ranged";
+    [SerializeField] private string weaponType;
     [SerializeField] private float M_weaponDamage;
     [SerializeField] private float R_weaponRange;
     [SerializeField] private float MR_weaponAttackSpeed;

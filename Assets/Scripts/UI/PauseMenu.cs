@@ -19,12 +19,10 @@ public class PauseMenu : MonoBehaviour
             
             if (!isPaused)
             {
-                print("Pausing");
                 Pause();
             }
             else
             {
-                print("Resuming");
                 Resume();
             }
         }

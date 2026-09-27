@@ -4,13 +4,18 @@ using UnityEngine;
 public class InGameTimer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timer;
-    public static float time { get; private set; }
+    public static float ElapsedTime { get; private set; }
+
+    private void Awake()
+    {
+        ElapsedTime = 0f;
+    }
 
     private void Update()
     {
-        time += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.FloorToInt(time % 60);
-        timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            ElapsedTime += Time.deltaTime;
+            int minutes = Mathf.FloorToInt(ElapsedTime / 60);
+            int seconds = Mathf.FloorToInt(ElapsedTime % 60);
+            timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

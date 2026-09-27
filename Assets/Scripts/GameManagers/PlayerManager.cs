@@ -1,40 +1,40 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] XP xp;
-    [SerializeField] Health health;
+    [SerializeField] GameObject _player;
+    [SerializeField] XP _xp;
+    [SerializeField] Health _health;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+
     }
 
     private void OnEnable()
     {
-        xp.OnPlayerLevelUp += ChoosePowerUp;
-        health.OnDeath += RestartGame;
-    }
-
-    private void RestartGame()
-    {
-        throw new NotImplementedException();
+        _health.OnDeath += RestartGame;
+        _xp.OnPlayerLevelUp += ChoosePowerUp;
     }
 
     private void OnDisable()
     {
-        xp.OnPlayerLevelUp -= ChoosePowerUp;
-        health.OnDeath += RestartGame;
+        _health.OnDeath -= RestartGame;
+        _xp.OnPlayerLevelUp -= ChoosePowerUp;
     }
 
     private void ChoosePowerUp()
     {
-        throw new NotImplementedException();
+            
     }
 
+    private void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 
 

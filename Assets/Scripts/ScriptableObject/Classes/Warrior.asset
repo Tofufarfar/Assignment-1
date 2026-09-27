@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fca465295dc3a49bbd16d054224724, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  _attackCooldown: 1
+  _attackSpeed: 1
+  _moveSpeed: 3
+  _maxHealth: 80
+  _equippedWeapon: {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}

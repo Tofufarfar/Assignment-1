@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
-        float currentTime = InGameTimer.time;
+        float currentTime = InGameTimer.ElapsedTime;
 
         if (objectPooler == null || player == null) return;
 
