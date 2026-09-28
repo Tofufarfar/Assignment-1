@@ -1,4 +1,6 @@
-using UnityEngine;
+//TODO Maybe later
+
+/*using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
@@ -69,3 +71,4 @@ public class UIManager : MonoBehaviour
 
 
 }
+*/
