@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 192842}
   - component: {fileID: 192841}
   m_Layer: 0
-  m_Name: Option1 (2)
+  m_Name: Option3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 205439834}
   - component: {fileID: 205439833}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Option1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1657,7 +1657,7 @@ GameObject:
   - component: {fileID: 536268094}
   - component: {fileID: 536268093}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Option2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2377,9 +2377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba594c7296d4014ca43fdd793fd6592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _pauseMenu: {fileID: 866327809}
-  _levelUpMenu: {fileID: 872769740}
-  _xp: {fileID: 2130182107}
 --- !u!1001 &785356161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2990,7 +2987,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 872769739}
-  - component: {fileID: 872769740}
   m_Layer: 0
   m_Name: LevelUpMenu
   m_TagString: Untagged
@@ -3016,26 +3012,13 @@ RectTransform:
   - {fileID: 455181151}
   - {fileID: 2029154098}
   - {fileID: 192840}
-  m_Father: {fileID: 1398496875}
+  m_Father: {fileID: 2037393716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 974.5165, y: 537.59595}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &872769740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872769738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a2c7cfc670c8574092b07805ad2b0e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  <isLevelUpScreen>k__BackingField: 0
 --- !u!4 &908343715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7517041590889391513, guid: 7b03244394537894887fcd6483c51afd, type: 3}
@@ -4104,7 +4087,7 @@ GameObject:
   - component: {fileID: 1286018038}
   - component: {fileID: 1286018037}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Option3Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4453,7 +4436,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1170211795}
-  - {fileID: 872769739}
+  - {fileID: 2037393716}
   - {fileID: 1674936601}
   - {fileID: 1834061710}
   - {fileID: 866327808}
@@ -5896,7 +5879,7 @@ GameObject:
   - component: {fileID: 2029154100}
   - component: {fileID: 2029154099}
   m_Layer: 0
-  m_Name: Option1 (1)
+  m_Name: Option2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6009,6 +5992,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7517041590889391513, guid: 7b03244394537894887fcd6483c51afd, type: 3}
   m_PrefabInstance: {fileID: 915955372}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2037393715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037393716}
+  - component: {fileID: 2037393717}
+  m_Layer: 0
+  m_Name: _LevelUpMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037393716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037393715}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -974.5165, y: -537.59595, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 872769739}
+  m_Father: {fileID: 1398496875}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2037393717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037393715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2c7cfc670c8574092b07805ad2b0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _levelUpMenuToHide: {fileID: 872769738}
+  _option1: {fileID: 455181150}
+  _option2: {fileID: 2029154097}
+  _option3: {fileID: 192839}
+  t_option1: {fileID: 205439833}
+  t_option2: {fileID: 536268093}
+  t_option3: {fileID: 1286018037}
+  _xp: {fileID: 2130182107}
 --- !u!1 &2119697074
 GameObject:
   m_ObjectHideFlags: 0
