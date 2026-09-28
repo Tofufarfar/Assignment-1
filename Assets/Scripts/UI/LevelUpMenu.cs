@@ -44,7 +44,7 @@ public class LevelUpMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    void ChooseOption(GameObject option)
+    void GetAndChooseUpgrade(GameObject option)
     {
         switch (option)
         {
