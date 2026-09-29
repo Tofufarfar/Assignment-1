@@ -1,8 +1,17 @@
 using UnityEngine;
 
-[CreateAssetMenu]
 public class UpgradeData : ScriptableObject
 {
-    [field: SerializeField] public string TypeOfUpgrade { get; private set; }
+    public enum RarityType
+    {
+        Common,
+        Uncommon,
+        Rare,
+        Epic,
+        Legendary
+    }
+    [field: SerializeField] public RarityType Rarity { get; private set; }
     [field: SerializeField] public float UpgradeIncrement { get; private set; }
+
+    public virtual string GetUpgradeTypeName() => string.Empty;
 }

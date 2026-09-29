@@ -3,21 +3,10 @@ using UnityEngine;
 [CreateAssetMenu]
 public class PlayerClassData : ScriptableObject
 {
-    [SerializeField] float _attackCooldown;
-    [SerializeField] float _attackSpeed;
-    [SerializeField] float _moveSpeed;
-    [SerializeField] int _maxHealth;
-    [SerializeField] WeaponData _equippedWeapon;
+    [field: SerializeField] public float AttackCooldown { get; private set; }
+    [field: SerializeField] public float AttackSpeed { get; private set; }
+    [field: SerializeField] public float MoveSpeed { get; private set; }
+    [field: SerializeField] public int MaxHealth { get; private set; }
+    [field: SerializeField] public WeaponData EquippedWeapon { get; private set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -3,15 +3,6 @@ using UnityEngine;
 [CreateAssetMenuAttribute]
 public class EnemyData : ScriptableObject
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [field: SerializeField] public float MoveSpeed { get; private set; }
+    [field: SerializeField] public float BaseDamage { get; private set; }
 }

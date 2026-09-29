@@ -1,16 +1,18 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelUpMenu : MonoBehaviour
 {
     public bool isLevelUpScreen { get; private set; } = false;
 
     [SerializeField] GameObject _levelUpMenuToHide;
-    [SerializeField] GameObject _option1,_option2, _option3;
-    [SerializeField] TextMeshProUGUI t_option1, t_option2, t_option3;
+    [SerializeField] GameObject[] _options;
+    [SerializeField] TextMeshProUGUI[] t_options;
+    [SerializeField] Color[] _colors;
 
     [SerializeField] XP _xp;
+    [SerializeField] GenerateUpgrade _generateUpgrade;
 
 
     void Awake()
@@ -21,6 +23,13 @@ public class LevelUpMenu : MonoBehaviour
     void Start()
     {
         HideLevelUpScreen();
+        //TODO LATER NOT PRIO
+        //for (var i = 0; i < _options.Length; i++)
+
+        //{
+        //    _options[i].GetComponentInChildren<Button>();
+        //    _options[i].GetComponentInChildren<Image>();
+        //}
     }
 
     void OnEnable()
@@ -50,11 +59,35 @@ public class LevelUpMenu : MonoBehaviour
 
     void GetAndChooseUpgrade()
     {
-        //FetchUpgradeDataOption1();
-        t_option1.text = "Speed";
-        //FetchUpgradeDataOption2();
-        t_option2.text = "Damage";
-        //FetchUpgradeDataOption3();
-        t_option3.text = "Size";
+        UpgradeData[] options = _generateUpgrade.GenerateAndPickOption();
+        for (var i = 0; i< options.Length;i++)
+        {
+            t_options[i].text = (options[i].UpgradeIncrement > 0) ?
+            (options[i].GetUpgradeTypeName() + '+' + options[i].UpgradeIncrement).ToString() :
+            (options[i].GetUpgradeTypeName() + options[i].UpgradeIncrement).ToString();
+        }
     }
+
+    void ApplySelectedOption()
+    {
+
+    }
+
+    
+    void ApplyRarityBackground()
+    {
+        // TODO LATER NOT PRIO
+        //_options[1].Image._colors[5];
+    }
+
+    Color GetColorForRarity(UpgradeData.RarityType rarity) =>
+        rarity switch
+        {
+            UpgradeData.RarityType.Common => _colors[0],
+            UpgradeData.RarityType.Uncommon => _colors[1],
+            UpgradeData.RarityType.Rare => _colors[2],
+            UpgradeData.RarityType.Epic => _colors[3],
+            UpgradeData.RarityType.Legendary => _colors[4],
+            _ => Color.white
+        };
 }
