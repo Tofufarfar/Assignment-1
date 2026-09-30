@@ -10,7 +10,7 @@ public class GenerateUpgrade : MonoBehaviour
 
     void Start()
     {
-        //GenerateAndPickOption();
+        GenerateAndPickOption();
     }
 
     UpgradeData.RarityType RarityRoll()

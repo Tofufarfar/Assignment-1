@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,13 +8,12 @@ public class LevelUpMenu : MonoBehaviour
     public bool isLevelUpScreen { get; private set; } = false;
 
     [SerializeField] GameObject _levelUpMenuToHide;
-    [SerializeField] GameObject[] _options;
+    [SerializeField] Button[] b_options;
     [SerializeField] TextMeshProUGUI[] t_options;
     [SerializeField] Color[] _colors;
 
     [SerializeField] XP _xp;
     [SerializeField] GenerateUpgrade _generateUpgrade;
-
 
     void Awake()
     {
@@ -23,13 +23,6 @@ public class LevelUpMenu : MonoBehaviour
     void Start()
     {
         HideLevelUpScreen();
-        //TODO LATER NOT PRIO
-        //for (var i = 0; i < _options.Length; i++)
-
-        //{
-        //    _options[i].GetComponentInChildren<Button>();
-        //    _options[i].GetComponentInChildren<Image>();
-        //}
     }
 
     void OnEnable()
@@ -60,24 +53,28 @@ public class LevelUpMenu : MonoBehaviour
     void GetAndChooseUpgrade()
     {
         UpgradeData[] options = _generateUpgrade.GenerateAndPickOption();
-        for (var i = 0; i< options.Length;i++)
+
+        for (var i = 0; i < options.Length; i++)
         {
+            var opt = options[i];
             t_options[i].text = (options[i].UpgradeIncrement > 0) ?
             (options[i].GetUpgradeTypeName() + '+' + options[i].UpgradeIncrement).ToString() :
             (options[i].GetUpgradeTypeName() + options[i].UpgradeIncrement).ToString();
+            b_options[i].interactable = true;
+            b_options[i].image.color = GetColorForRarity(opt.Rarity);
         }
     }
 
-    void ApplySelectedOption()
+    void OnClick()
     {
-
+        
     }
-
-    
-    void ApplyRarityBackground()
+    void ApplySelectedOption(int index)
     {
-        // TODO LATER NOT PRIO
-        //_options[1].Image._colors[5];
+        if (b_options == null || index < 0 || index >= b_options.Length) return;
+        var chosen = b_options[index];
+        // TODO: apply the chosen upgrade
+        HideLevelUpScreen();
     }
 
     Color GetColorForRarity(UpgradeData.RarityType rarity) =>
