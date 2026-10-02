@@ -36,4 +36,11 @@ public class Health : MonoBehaviour
         CurrentHP = MaxHP;
         HPChanged?.Invoke(CurrentHP);
     }
+
+    public void MaxHealthIncrease(float amount)
+    {
+        MaxHP += amount;
+        CurrentHP = MaxHP;
+        HPChanged?.Invoke(CurrentHP);
+    }
 }

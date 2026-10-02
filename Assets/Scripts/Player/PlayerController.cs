@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] MeleeStats mStats;
+    [SerializeField] RangeStats rStats;
+    [SerializeField] PlayerStats pStats;
     InputAction moveAction;
-    private float speed = 5f;
     Rigidbody2D rb;
     Health health;
     [SerializeField] private GameObject weapon;
@@ -20,12 +22,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
     }
 
     private void Update()
     {
-        weapon.transform.RotateAround(transform.position, Vector3.forward, 90 * Time.deltaTime);
+        weapon.transform.RotateAround(transform.position, Vector3.forward, mStats._swing * Time.deltaTime);
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
-        rb.linearVelocity = moveValue * speed;
+        rb.linearVelocity = moveValue * pStats._movementSpeed;
         
     }
 

@@ -7,10 +7,10 @@ public class MeleeStats : Stats
 
     public event Action OnPlayerStatsChanged;
 
-    float _damage;
-    float _size;
-    float _swing;
-    float _arc;
+    public float _damage { get; private set; }
+    public float _size { get; private set; }
+    public float _swing { get; private set; }
+    public float _arc { get; private set; }
     //float LifeLeech => _meleeWeaponData.LifeLeech;
     void Awake()
     {

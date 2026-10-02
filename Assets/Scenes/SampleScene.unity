@@ -1079,6 +1079,9 @@ MonoBehaviour:
   - tag: XPGem
     prefab: {fileID: 4858010506431399849, guid: 15381ffa5468a25488fd84c3940e9bc6, type: 3}
     size: 150
+  - tag: Projectiles
+    prefab: {fileID: 1164557697399695480, guid: 210417ec2481c0046a5308dc86812241, type: 3}
+    size: 1000
 --- !u!4 &389681073
 Transform:
   m_ObjectHideFlags: 0
@@ -3333,6 +3336,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7517041590889391513, guid: 7b03244394537894887fcd6483c51afd, type: 3}
   m_PrefabInstance: {fileID: 560296015}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1011144582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011144583}
+  - component: {fileID: 1011144584}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1011144583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011144582}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.8109207, y: -5.00598, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1274919397}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1011144584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011144582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e27e6c2edd1f44e92049c6a4cfe558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
+  _equippedWeapons: []
 --- !u!1001 &1015403667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4253,6 +4301,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1011144583}
   - {fileID: 2119697075}
   - {fileID: 1170049787}
   - {fileID: 781355274}
@@ -5911,9 +5960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b0903a7e814764f9ccfdcc458f1ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Stats
-  _rangeWeaponData: {fileID: 11400000, guid: dcb81bcbebf77674b8dd7f6bcf534a1b, type: 2}
-  _meleeWeaponData: {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}
-  _playerClassData: {fileID: 11400000, guid: aad2090ca4ca2c64e8a8589d9067f2de, type: 2}
 --- !u!4 &1930149120
 Transform:
   m_ObjectHideFlags: 0
@@ -5958,9 +6004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b5c8b0d7afbda4583677ecd6dc5def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EquippedWeapon
-  _equippedWeapons:
-  - {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}
-  - {fileID: 11400000, guid: dcb81bcbebf77674b8dd7f6bcf534a1b, type: 2}
+  _equippedWeapons: []
 --- !u!4 &1948836628
 Transform:
   m_ObjectHideFlags: 0
@@ -6144,10 +6188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb0ddf3f7a5d59499c1c3ac615529dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeStats
-  _rangeWeaponData: {fileID: 0}
-  _meleeWeaponData: {fileID: 0}
-  _playerClassData: {fileID: 0}
-  _meleeWeaponData: {fileID: 0}
+  _meleeWeaponData: {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}
 --- !u!1 &2029154097
 GameObject:
   m_ObjectHideFlags: 0
@@ -6378,10 +6419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2523ea69a17c143bf3e19e8cd4617a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeStats
-  _rangeWeaponData: {fileID: 0}
-  _meleeWeaponData: {fileID: 0}
-  _playerClassData: {fileID: 0}
-  _rangedWeaponData: {fileID: 0}
+  _rangedWeaponData: {fileID: 11400000, guid: dcb81bcbebf77674b8dd7f6bcf534a1b, type: 2}
 --- !u!4 &2039098650
 Transform:
   m_ObjectHideFlags: 0
@@ -6406,9 +6444,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2119697075}
-  - component: {fileID: 2119697076}
+  - component: {fileID: 2119697077}
   m_Layer: 0
-  m_Name: PlayerLevelUpRewards
+  m_Name: UpgradeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6429,7 +6467,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1274919397}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2119697076
+--- !u!114 &2119697077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6438,9 +6476,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2119697074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08d8cf2080e62df488da6d012152d676, type: 3}
+  m_Script: {fileID: 11500000, guid: be4ffb640cf185c4f81d9baac88a3ef1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerLevelUpRewards
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
 --- !u!4 &2121761453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7517041590889391513, guid: 7b03244394537894887fcd6483c51afd, type: 3}
@@ -6485,10 +6523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b434b5201eb114fadab39510dc03f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  _rangeWeaponData: {fileID: 0}
-  _meleeWeaponData: {fileID: 0}
-  _playerClassData: {fileID: 0}
-  _playerUpgradeData: {fileID: 0}
+  _playerUpgradeData: {fileID: 11400000, guid: aad2090ca4ca2c64e8a8589d9067f2de, type: 2}
 --- !u!1 &2139166635
 GameObject:
   m_ObjectHideFlags: 0
@@ -6534,7 +6569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   _player: {fileID: 533806267}
-  _xp: {fileID: 2130182107}
   _health: {fileID: 2130182108}
 --- !u!1001 &1046960325527374579
 PrefabInstance:
@@ -6588,6 +6622,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8363369880215472250, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
+      propertyPath: mStats
+      value: 
+      objectReference: {fileID: 2026633736}
+    - target: {fileID: 8363369880215472250, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
+      propertyPath: pStats
+      value: 
+      objectReference: {fileID: 2130182113}
+    - target: {fileID: 8363369880215472250, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
+      propertyPath: rStats
+      value: 
+      objectReference: {fileID: 2039098649}
     - target: {fileID: 8399023981524378078, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

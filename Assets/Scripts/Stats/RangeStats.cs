@@ -4,13 +4,13 @@ using UnityEngine;
 public class RangeStats : Stats
 {
     [SerializeField] RangedWeaponData _rangedWeaponData;
-    float _damage;
-    float _projectileBlastRadius;
-    float _projectileRange;
-    float _projectileSpeed;
-    float _projectileFireRate;
-    float _magazineSize;
-    float _reloadSpeed;
+    public float _damage { get; private set; }
+    public float _projectileBlastRadius { get; private set; }
+    public float _projectileRange { get; private set; }
+    public float _projectileSpeed { get; private set; }
+    public float _projectileFireRate { get; private set; }
+    public float _magazineSize { get; private set; }
+    public float _reloadSpeed { get; private set; }
 
     public event Action OnPlayerStatsChanged;
 
