@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64ca184ca8775442ac70e739ea90de7, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: Assembly-CSharp::RangedWeaponData
-  <BaseDamage>k__BackingField: 0
+  <BaseDamage>k__BackingField: 1
   <Sprite>k__BackingField: {fileID: 0}
   <Rarity>k__BackingField: 0
-  <ProjectileBlastRadius>k__BackingField: 0
-  <ProjectileRange>k__BackingField: 0
-  <ProjectileSpeed>k__BackingField: 0
-  <FireRate>k__BackingField: 0
-  <MagazineSize>k__BackingField: 0
-  <ReloadTime>k__BackingField: 0
+  <ProjectileBlastRadius>k__BackingField: 1
+  <ProjectileRange>k__BackingField: 2
+  <ProjectileSpeed>k__BackingField: 1
+  <FireRate>k__BackingField: 1
+  <MagazineSize>k__BackingField: 1
+  <ReloadTime>k__BackingField: 1

@@ -201,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 192842}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 192841}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &192842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +666,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 72
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1402,7 +1414,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 455181153}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 455181152}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &455181153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,7 +1825,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 72
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3065,7 +3089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &872769739
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4324,7 +4348,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 72
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5858,6 +5882,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b03244394537894887fcd6483c51afd, type: 3}
+--- !u!1 &1930149118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1930149120}
+  - component: {fileID: 1930149119}
+  m_Layer: 0
+  m_Name: Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1930149119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930149118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b0903a7e814764f9ccfdcc458f1ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Stats
+  _rangeWeaponData: {fileID: 11400000, guid: dcb81bcbebf77674b8dd7f6bcf534a1b, type: 2}
+  _meleeWeaponData: {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}
+  _playerClassData: {fileID: 11400000, guid: aad2090ca4ca2c64e8a8589d9067f2de, type: 2}
+--- !u!4 &1930149120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930149118}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 541.68823, y: 905.4553, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1948836626
 GameObject:
   m_ObjectHideFlags: 0
@@ -5889,6 +5960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EquippedWeapon
   _equippedWeapons:
   - {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}
+  - {fileID: 11400000, guid: dcb81bcbebf77674b8dd7f6bcf534a1b, type: 2}
 --- !u!4 &1948836628
 Transform:
   m_ObjectHideFlags: 0
@@ -6028,6 +6100,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7517041590889391513, guid: 7b03244394537894887fcd6483c51afd, type: 3}
   m_PrefabInstance: {fileID: 68332181}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2026633734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2026633735}
+  - component: {fileID: 2026633736}
+  m_Layer: 0
+  m_Name: MeleeStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2026633735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026633734}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 541.68823, y: 905.4553, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2026633736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026633734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb0ddf3f7a5d59499c1c3ac615529dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeStats
+  _rangeWeaponData: {fileID: 0}
+  _meleeWeaponData: {fileID: 0}
+  _playerClassData: {fileID: 0}
+  _meleeWeaponData: {fileID: 0}
 --- !u!1 &2029154097
 GameObject:
   m_ObjectHideFlags: 0
@@ -6110,7 +6230,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2029154100}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2029154099}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2029154100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6200,17 +6332,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _levelUpMenuToHide: {fileID: 872769738}
-  _options:
-  - {fileID: 455181150}
-  - {fileID: 2029154097}
-  - {fileID: 192839}
-  t_options:
+  _optionsButtons:
+  - {fileID: 455181152}
+  - {fileID: 2029154099}
+  - {fileID: 192841}
+  _optionsTexts:
   - {fileID: 205439833}
   - {fileID: 536268093}
   - {fileID: 1286018037}
-  _colors: []
+  _colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.11764706, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0.4392157, b: 0.8666667, a: 1}
+  - {r: 0.6392157, g: 0.20784314, b: 0.93333334, a: 1}
+  - {r: 1, g: 0.5019608, b: 0, a: 1}
+  _playerStats: {fileID: 2130182113}
   _xp: {fileID: 2130182107}
   _generateUpgrade: {fileID: 186410262}
+--- !u!1 &2039098648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2039098650}
+  - component: {fileID: 2039098649}
+  m_Layer: 0
+  m_Name: RangeStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2039098649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039098648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2523ea69a17c143bf3e19e8cd4617a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangeStats
+  _rangeWeaponData: {fileID: 0}
+  _meleeWeaponData: {fileID: 0}
+  _playerClassData: {fileID: 0}
+  _rangedWeaponData: {fileID: 0}
+--- !u!4 &2039098650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039098648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 541.68823, y: 905.4553, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119697074
 GameObject:
   m_ObjectHideFlags: 0
@@ -6287,6 +6473,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ba7a87ae501a648b6d7b1caa1b9467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
+--- !u!114 &2130182113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533806267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b434b5201eb114fadab39510dc03f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  _rangeWeaponData: {fileID: 0}
+  _meleeWeaponData: {fileID: 0}
+  _playerClassData: {fileID: 0}
+  _playerUpgradeData: {fileID: 0}
 --- !u!1 &2139166635
 GameObject:
   m_ObjectHideFlags: 0
@@ -6404,7 +6606,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1966378348363996386, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1948836628}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7507557695791842794, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2130182113}
   m_SourcePrefab: {fileID: 100100000, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -6421,3 +6626,6 @@ SceneRoots:
   - {fileID: 389681073}
   - {fileID: 935762844}
   - {fileID: 186410263}
+  - {fileID: 2039098650}
+  - {fileID: 2026633735}
+  - {fileID: 1930149120}

@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeleeUpgradeData
   <Rarity>k__BackingField: 4
   <UpgradeIncrement>k__BackingField: 10
+  <Category>k__BackingField: 0
+  <UpgradeDescription>k__BackingField: Weapon Size
   <UpgradeType>k__BackingField: 0

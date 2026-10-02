@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0890b066e487e2c40a35e73bc06ad560, type: 3}
   m_Name: CommonSize
   m_EditorClassIdentifier: Assembly-CSharp::MeleeUpgradeData
-  <UpgradeRarity>k__BackingField: 0
+  <Rarity>k__BackingField: 0
   <UpgradeIncrement>k__BackingField: 1
+  <Category>k__BackingField: 0
+  <UpgradeDescription>k__BackingField: Weapon Size
   <UpgradeType>k__BackingField: 0

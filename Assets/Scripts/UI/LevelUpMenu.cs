@@ -8,21 +8,34 @@ public class LevelUpMenu : MonoBehaviour
     public bool isLevelUpScreen { get; private set; } = false;
 
     [SerializeField] GameObject _levelUpMenuToHide;
-    [SerializeField] Button[] b_options;
-    [SerializeField] TextMeshProUGUI[] t_options;
+    [SerializeField] Button[] _optionsButtons;
+    [SerializeField] TextMeshProUGUI[] _optionsTexts;
     [SerializeField] Color[] _colors;
 
+    [SerializeField] PlayerStats _playerStats;
     [SerializeField] XP _xp;
     [SerializeField] GenerateUpgrade _generateUpgrade;
+
+    UpgradeData[] _currentOptions;
 
     void Awake()
     {
         _xp.OnPlayerLevelUp += ShowLevelUpScreen;
+        _xp.OnPlayerLevelUp += AddListenersToButtons;
     }
 
     void Start()
     {
         HideLevelUpScreen();
+    }
+
+    private void AddListenersToButtons()
+    {
+        for (int i = 0; i < _optionsButtons.Length; i++)
+        {
+            int j = i;
+            _optionsButtons[i].onClick.AddListener(() => ApplySelectedOption(j));
+        }
     }
 
     void OnEnable()
@@ -33,6 +46,7 @@ public class LevelUpMenu : MonoBehaviour
     void OnDisable()
     {
         _xp.OnPlayerLevelUp -= ShowLevelUpScreen;
+        _xp.OnPlayerLevelUp -= AddListenersToButtons;
     }
 
     public void ShowLevelUpScreen()
@@ -57,24 +71,31 @@ public class LevelUpMenu : MonoBehaviour
         for (var i = 0; i < options.Length; i++)
         {
             var opt = options[i];
-            t_options[i].text = (options[i].UpgradeIncrement > 0) ?
-            (options[i].GetUpgradeTypeName() + '+' + options[i].UpgradeIncrement).ToString() :
-            (options[i].GetUpgradeTypeName() + options[i].UpgradeIncrement).ToString();
-            b_options[i].interactable = true;
-            b_options[i].image.color = GetColorForRarity(opt.Rarity);
+            _optionsTexts[i].text = (options[i].UpgradeIncrement > 0) ?
+            (options[i].GetUpgradeTypeName() + '+' + options[i].UpgradeIncrement).ToString() +'%' :
+            "";
+            _optionsButtons[i].interactable = true;
+            _optionsButtons[i].image.color = GetColorForRarity(opt.Rarity);
+            _currentOptions = options;
         }
-    }
-
-    void OnClick()
-    {
-        
     }
     void ApplySelectedOption(int index)
     {
-        if (b_options == null || index < 0 || index >= b_options.Length) return;
-        var chosen = b_options[index];
-        // TODO: apply the chosen upgrade
+        if (_optionsButtons == null || index < 0 || index >= _optionsButtons.Length) return;
+        var chosen = _optionsButtons[index];
+        var opt = _currentOptions[index];
+        var targetStats = UpgradeManager.Instance.GetStatsForCategory(opt.Category);
+        opt.ApplyUpgrade(targetStats);
         HideLevelUpScreen();
+        RemoveListenersFromButtons();
+    }
+
+    private void RemoveListenersFromButtons()
+    {
+        for(int i = 0; i < _optionsButtons.Length; i++)
+        {
+            _optionsButtons[i].onClick.RemoveAllListeners();
+        }
     }
 
     Color GetColorForRarity(UpgradeData.RarityType rarity) =>

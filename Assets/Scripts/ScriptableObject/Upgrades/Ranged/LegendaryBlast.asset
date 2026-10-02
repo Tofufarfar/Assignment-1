@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RangeUpgradeData
   <Rarity>k__BackingField: 4
   <UpgradeIncrement>k__BackingField: 10
+  <Category>k__BackingField: 1
+  <UpgradeDescription>k__BackingField: 
   <UpgradeType>k__BackingField: 0

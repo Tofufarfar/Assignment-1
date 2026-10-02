@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] GameObject _player;
-    [SerializeField] XP _xp;
     [SerializeField] Health _health;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,20 +16,12 @@ public class PlayerManager : MonoBehaviour
     private void OnEnable()
     {
         _health.OnDeath += RestartGame;
-        _xp.OnPlayerLevelUp += ChoosePowerUp;
     }
 
     private void OnDisable()
     {
-        _health.OnDeath -= RestartGame;
-        _xp.OnPlayerLevelUp -= ChoosePowerUp;
+        _health.OnDeath -= RestartGame;    
     }
-
-    private void ChoosePowerUp()
-    {
-            
-    }
-
     private void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

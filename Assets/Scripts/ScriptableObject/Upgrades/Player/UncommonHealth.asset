@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUpgradeData
   <Rarity>k__BackingField: 1
   <UpgradeIncrement>k__BackingField: 2
+  <Category>k__BackingField: 2
+  <UpgradeDescription>k__BackingField: 
   <UpgradeType>k__BackingField: 1
