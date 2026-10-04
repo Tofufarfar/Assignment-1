@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Upgrades/Melee")]
@@ -12,6 +13,7 @@ public class MeleeUpgradeData : UpgradeData
     }
     [field: SerializeField] public TypeOfUpgrade UpgradeType { get; private set; }
 
+
     public override string GetUpgradeTypeName() => UpgradeType.ToString();
     public override void ApplyUpgrade(Stats stats)
     {
@@ -20,7 +22,7 @@ public class MeleeUpgradeData : UpgradeData
             switch (UpgradeType)
             {
                 case TypeOfUpgrade.Size:
-                    meleeStats.IncreaseSize((int)UpgradeIncrement);
+                    meleeStats.IncreaseSize(UpgradeIncrement);
                     break;
                 case TypeOfUpgrade.Swing:
                     meleeStats.IncreaseSwingSpeed((int)UpgradeIncrement);
@@ -30,6 +32,7 @@ public class MeleeUpgradeData : UpgradeData
                     break;
                 //case TypeOfUpgrade.LifeLeech:
                 //    meleeStats.IncreaseLifeLeech(UpgradeIncrement);
+
                 //    break;
             }
         }

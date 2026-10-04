@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Health health;
     [SerializeField] private GameObject weapon;
+    XP xp;
 
     private void Awake()
     {
@@ -40,18 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision2D)
     {
-        health.TakeDamage(0.1f);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("XPGem"))
-        { 
-            XP xp = GetComponent<XP>();
-            xp.CalculateXP();
-            Destroy(collision.gameObject);
-        }
-        
+        health.TakeDamage(0.01f);
     }
 
 }

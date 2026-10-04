@@ -5,13 +5,14 @@ public class MeleeStats : Stats
 {
     [SerializeField] MeleeWeaponData _meleeWeaponData;
 
-    public event Action OnPlayerStatsChanged;
-
     public float _damage { get; private set; }
     public float _size { get; private set; }
     public float _swing { get; private set; }
     public float _arc { get; private set; }
     //float LifeLeech => _meleeWeaponData.LifeLeech;
+
+    public event Action OnMeleeStatChanged;
+    public event Action OnSizeStatChanged;
     void Awake()
     {
 
@@ -31,22 +32,36 @@ public class MeleeStats : Stats
             UpgradeManager.Instance.Register(UpgradeData.UpgradeCategory.Melee, this);
         }
     }
-    public void IncreaseDamage(int amount) => _damage = ApplyFloatStat(_damage, amount, 0, 9999);
-    public void IncreaseSize(int amount) => _size = ApplyFloatStat(_size, amount, 0, 9999);
-    public void IncreaseSwingSpeed(int amount) => _swing = ApplyFloatStat(_swing, amount, 0, 9999);
-    public void IncreaseArc(int amount) => _arc = ApplyFloatStat(_arc, amount, 0, 360);
+    public void IncreaseDamage(int amount) 
+    {
+        _damage = ApplyFloatStat(_damage, amount, 0, 9999);
+        OnMeleeStatChanged?.Invoke();
+    } 
+    public void IncreaseSize(float amount) 
+    {
+        _size = ApplyFloatStat(_size, amount, 0, 0.99f);
+        OnSizeStatChanged?.Invoke();
+    }
+    public void IncreaseSwingSpeed(int amount) 
+    {
+        _swing = ApplyFloatStat(_swing, amount, 0, 9999);
+        OnMeleeStatChanged?.Invoke();
+    }
+    public void IncreaseArc(int amount) 
+    {
+        _arc = ApplyFloatStat(_arc, amount, 0, 360);
+        OnMeleeStatChanged?.Invoke();
+    } 
 
 
     private int ApplyIntStat(int stat, int increaseAmount, int min = int.MinValue, int max = int.MaxValue)
     {
         stat = Mathf.Clamp(stat + increaseAmount, min, max);
-        OnPlayerStatsChanged?.Invoke();
         return stat;
     }
     private float ApplyFloatStat(float stat, float increaseAmount, float min = float.MinValue, float max = float.MaxValue)
     {
         stat = Mathf.Clamp(stat + increaseAmount, min, max);
-        OnPlayerStatsChanged?.Invoke();
         return stat;
     }
 }

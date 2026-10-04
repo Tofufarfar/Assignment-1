@@ -34,23 +34,42 @@ public class PlayerStats : Stats
         }
     }
 
-    public void IncreaseMaxHealth(float amount) => _maxHealth = ApplyFloatStat(_maxHealth, amount, 1, 9999);
-    public void IncreaseXPGain(int amount) => _percentageXPGain = ApplyIntStat(_percentageXPGain, amount, 0,1000);
-    public void IncreaseArmor(int amount) => _armor = ApplyIntStat(_armor, amount, 0, 1000);
-    public void IncreaseVacuumEffect(int amount) => _vacuumEffect = ApplyIntStat(_vacuumEffect, amount, 0, 100);
-    public void IncreaseMovementSpeed(float amount) => _movementSpeed = ApplyFloatStat(_movementSpeed, amount, 0, 25);
-   
+    public void IncreaseMaxHealth(float amount) 
+    {
+        _maxHealth = ApplyFloatStat(_maxHealth, amount, 1, 9999);
+        OnPlayerStatsChanged?.Invoke();
+    }
+    public void IncreaseXPGain(int amount)
+    {
+        _percentageXPGain = ApplyIntStat(_percentageXPGain, amount, 0, 1000);
+        OnPlayerStatsChanged?.Invoke();
+    }
+    public void IncreaseArmor(int amount) 
+    {
+        _armor = ApplyIntStat(_armor, amount, 0, 1000);
+        OnPlayerStatsChanged?.Invoke();
+    }
+    public void IncreaseVacuumEffect(int amount)
+    {
+        _vacuumEffect = ApplyIntStat(_vacuumEffect, amount, 0, 100);
+        OnPlayerStatsChanged?.Invoke();
+    }
+    public void IncreaseMovementSpeed(float amount)
+    {
+        _movementSpeed = ApplyFloatStat(_movementSpeed, amount, 0, 15);
+        OnPlayerStatsChanged?.Invoke();
+    }
+
+
 
     private int ApplyIntStat(int stat, int increaseAmount, int min = int.MinValue, int max = int.MaxValue)
     {
         stat = Mathf.Clamp(stat + increaseAmount, min, max);
-        OnPlayerStatsChanged?.Invoke();
         return stat;
     }
     private float ApplyFloatStat(float stat, float increaseAmount, float min = float.MinValue, float max = float.MaxValue)
     {
         stat = Mathf.Clamp(stat + increaseAmount, min, max);
-        OnPlayerStatsChanged?.Invoke();
         return stat;
     }
 }

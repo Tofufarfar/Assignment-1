@@ -13,6 +13,7 @@ public class PlayerUpgradeData : UpgradeData
         Armor
     }
     [field: SerializeField] public TypeOfUpgrade UpgradeType { get; private set; }
+
     public override string GetUpgradeTypeName() => UpgradeType.ToString();
     public override void ApplyUpgrade(Stats stats)
     {

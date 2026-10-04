@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RareSpeed
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUpgradeData
   <Rarity>k__BackingField: 2
-  <UpgradeIncrement>k__BackingField: 3
+  <UpgradeIncrement>k__BackingField: 0.3
   <Category>k__BackingField: 2
   <UpgradeDescription>k__BackingField: Move Speed
   <UpgradeType>k__BackingField: 0

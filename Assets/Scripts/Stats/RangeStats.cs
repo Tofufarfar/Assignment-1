@@ -12,7 +12,7 @@ public class RangeStats : Stats
     public float _magazineSize { get; private set; }
     public float _reloadSpeed { get; private set; }
 
-    public event Action OnPlayerStatsChanged;
+    public event Action OnRangeStatsChanged;
 
     void Awake()
     {
@@ -36,25 +36,52 @@ public class RangeStats : Stats
         }
     }
 
-    public void IncreaseDamage(float amount) => _damage = ApplyFloatStat(_damage, amount, 0, 9999);
-    public void IncreaseProjectileBlastRadius(float amount) => _projectileBlastRadius = ApplyFloatStat(_projectileBlastRadius, amount, 0, 9999);
-    public void IncreaseProjectileRange(float amount) => _projectileRange = ApplyFloatStat(_projectileRange, amount, 0, 9999);
-    public void IncreaseProjectileSpeed(float amount) => _projectileSpeed = ApplyFloatStat(_projectileSpeed, amount, 0, 9999);
-    public void IncreaseProjectileFireRate(float amount) => _projectileFireRate = ApplyFloatStat(_projectileFireRate, amount, 0, 9999);
-    public void IncreaseMagazineSize(float amount) => _magazineSize = ApplyFloatStat(_magazineSize, amount, 0, 9999);
-    public void IncreaseReloadSpeed(float amount) => _reloadSpeed = ApplyFloatStat(_reloadSpeed, amount, 0, 9999);
+    public void IncreaseDamage(float amount)
+    {
+        _damage = ApplyFloatStat(_damage, amount, 0, 9999);
+        OnRangeStatsChanged?.Invoke();
+    }
+    public void IncreaseProjectileBlastRadius(float amount)
+    {
+        _projectileBlastRadius = ApplyFloatStat(_projectileBlastRadius, amount, 0, 9999);
+        OnRangeStatsChanged?.Invoke();
+    }
+
+    public void IncreaseProjectileRange(float amount)
+    {
+        _projectileRange = ApplyFloatStat(_projectileRange, amount, 0, 9999);
+        OnRangeStatsChanged?.Invoke();
+    }
+    public void IncreaseProjectileSpeed(float amount)
+    {
+        _projectileSpeed = ApplyFloatStat(_projectileSpeed, amount, 0, 9999);
+        OnRangeStatsChanged?.Invoke();
+    }
+    public void IncreaseProjectileFireRate(float amount)
+    {
+        _projectileFireRate = ApplyFloatStat(_projectileFireRate, amount, 0, 9999);
+        OnRangeStatsChanged?.Invoke();
+    }
+    public void IncreaseMagazineSize(float amount)
+    {
+        _magazineSize = ApplyFloatStat(_magazineSize, amount, 0, 9999);
+        OnRangeStatsChanged?.Invoke();
+    }
+    public void IncreaseReloadSpeed(float amount)
+    {
+        _reloadSpeed = ApplyFloatStat(_reloadSpeed, amount, 0, 9999);
+        OnRangeStatsChanged?.Invoke();
+    }
 
     private int ApplyIntStat(int stat, int increaseAmount, int min = int.MinValue, int max = int.MaxValue)
     {
         stat = Mathf.Clamp(stat + increaseAmount, min, max);
-        OnPlayerStatsChanged?.Invoke();
         return stat;
     }
 
     private float ApplyFloatStat(float stat, float increaseAmount, float min = float.MinValue, float max = float.MaxValue)
     {
         stat = Mathf.Clamp(stat + increaseAmount, min, max);
-        OnPlayerStatsChanged?.Invoke();
         return stat;
     }
 }

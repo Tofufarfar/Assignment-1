@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EpicSwing
   m_EditorClassIdentifier: Assembly-CSharp::MeleeUpgradeData
   <Rarity>k__BackingField: 3
-  <UpgradeIncrement>k__BackingField: 5
+  <UpgradeIncrement>k__BackingField: 10
   <Category>k__BackingField: 0
   <UpgradeDescription>k__BackingField: Melee Swing Cooldown
   <UpgradeType>k__BackingField: 1

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2580836330121792826}
   - component: {fileID: 3472890566516755153}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037927590257013397}
   - component: {fileID: 3990441541982479093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,8 @@ GameObject:
   - component: {fileID: 1008587510995148873}
   - component: {fileID: 5099447752471281416}
   - component: {fileID: 404894559137053870}
-  m_Layer: 0
+  - component: {fileID: -8345292013526212229}
+  m_Layer: 6
   m_Name: XPGem
   m_TagString: XPGem
   m_Icon: {fileID: 0}
@@ -329,6 +330,19 @@ PolygonCollider2D:
       - {x: 0, y: -0.25}
       - {x: 0.5, y: 0}
   m_UseDelaunayMesh: 1
+--- !u!114 &-8345292013526212229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858010506431399849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8272fb42eac1c9e4994fccdaab2d47ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XPGem
+  _target: {fileID: 0}
 --- !u!1 &6054455056234404148
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9069670282921495535}
   - component: {fileID: 5402569869733825086}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3794568119105460255}
   - component: {fileID: 749869722556482944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

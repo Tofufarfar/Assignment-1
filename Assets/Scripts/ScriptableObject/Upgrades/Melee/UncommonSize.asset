@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UncommonSize
   m_EditorClassIdentifier: Assembly-CSharp::MeleeUpgradeData
   <Rarity>k__BackingField: 1
-  <UpgradeIncrement>k__BackingField: 2
+  <UpgradeIncrement>k__BackingField: 0.02
   <Category>k__BackingField: 0
   <UpgradeDescription>k__BackingField: Weapon Size
   <UpgradeType>k__BackingField: 0

@@ -546,6 +546,55 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5223024772357363548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1766449347560332350}
+  - component: {fileID: 5129298624387695193}
+  m_Layer: 0
+  m_Name: Blade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1766449347560332350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223024772357363548}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5885, y: -0.9030999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8041381769376221638}
+  - {fileID: 5065604493520855017}
+  m_Father: {fileID: 1590821254375189992}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5129298624387695193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223024772357363548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b5c8b0d7afbda4583677ecd6dc5def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
+  _equippedWeapons: []
+  _meleeWeaponData: {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}
+  _meleeStats: {fileID: 0}
 --- !u!1 &5638616653911295664
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,8 +715,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8041381769376221638}
-  - {fileID: 5065604493520855017}
   - {fileID: 1590821254375189992}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -800,6 +847,7 @@ Transform:
   - {fileID: 5948527838966875613}
   - {fileID: 2019725599584420486}
   - {fileID: 2553558407236009665}
+  - {fileID: 1766449347560332350}
   m_Father: {fileID: 5340706479356662627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7096028608635688813
@@ -814,7 +862,7 @@ GameObject:
   - component: {fileID: 680817313075402689}
   - component: {fileID: 2029306314502690797}
   m_Layer: 0
-  m_Name: Blade
+  m_Name: Blade Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,11 +877,11 @@ Transform:
   m_GameObject: {fileID: 7096028608635688813}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.45343, z: 0}
-  m_LocalScale: {x: 1, y: 0.093104646, z: 1}
+  m_LocalPosition: {x: -0.46145153, y: 0.006979823, z: 0}
+  m_LocalScale: {x: 1, y: 0.093104646, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5340706479356662627}
+  m_Father: {fileID: 1766449347560332350}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &680817313075402689
 SpriteRenderer:
@@ -1058,11 +1106,11 @@ Transform:
   m_GameObject: {fileID: 9002699001277966027}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.52659, y: -0.45352998, z: 0}
-  m_LocalScale: {x: 0.095164865, y: 0.095164865, z: 0.09516486}
+  m_LocalPosition: {x: -0.98803985, y: 0.0068796873, z: 0}
+  m_LocalScale: {x: 0.0951649, y: 0.09516489, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5340706479356662627}
+  m_Father: {fileID: 1766449347560332350}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &4970421083821446222
 SpriteRenderer:
