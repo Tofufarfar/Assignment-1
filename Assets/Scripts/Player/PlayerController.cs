@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        weapon.transform.RotateAround(transform.position, Vector3.forward, mStats._swing * Time.deltaTime);
+        weapon.transform.RotateAround(transform.position, Vector3.forward, mStats.Swing * Time.deltaTime);
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
-        rb.linearVelocity = moveValue * pStats._movementSpeed;
+        rb.linearVelocity = moveValue * pStats.MovementSpeed;
         
     }
 

@@ -4,24 +4,25 @@ using UnityEngine;
 public class RangeStats : Stats
 {
     [SerializeField] RangedWeaponData _rangedWeaponData;
-    public float _damage { get; private set; }
-    public float _projectileBlastRadius { get; private set; }
-    public float _projectileRange { get; private set; }
-    public float _projectileSpeed { get; private set; }
-    public float _projectileFireRate { get; private set; }
-    public float _magazineSize { get; private set; }
-    public float _reloadSpeed { get; private set; }
+    public float Damage { get; private set; }
+    public float ProjectileBlastRadius { get; private set; }
+    public float ProjectileRange { get; private set; }
+    public float ProjectileSpeed { get; private set; }
+    public float ProjectileFireRate { get; private set; }
+    public float MagazineSize { get; private set; }
+    public float ReloadSpeed { get; private set; }
 
     public event Action OnRangeStatsChanged;
 
+
     void Awake()
     {
-        _projectileBlastRadius = _rangedWeaponData.ProjectileBlastRadius;
-        _projectileRange = _rangedWeaponData.ProjectileRange;
-        _projectileSpeed = _rangedWeaponData.ProjectileSpeed;
-        _projectileFireRate = _rangedWeaponData.FireRate;
-        _magazineSize = _rangedWeaponData.MagazineSize;
-        _reloadSpeed = _rangedWeaponData.ReloadSpeed;
+        ProjectileBlastRadius = _rangedWeaponData.ProjectileBlastRadius;
+        ProjectileRange = _rangedWeaponData.ProjectileRange;
+        ProjectileSpeed = _rangedWeaponData.ProjectileSpeed;
+        ProjectileFireRate = _rangedWeaponData.FireRate;
+        MagazineSize = _rangedWeaponData.MagazineSize;
+        ReloadSpeed = _rangedWeaponData.ReloadSpeed;
     }
 
     void Start()
@@ -38,38 +39,38 @@ public class RangeStats : Stats
 
     public void IncreaseDamage(float amount)
     {
-        _damage = ApplyFloatStat(_damage, amount, 0, 9999);
+        Damage = ApplyFloatStat(Damage, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
     public void IncreaseProjectileBlastRadius(float amount)
     {
-        _projectileBlastRadius = ApplyFloatStat(_projectileBlastRadius, amount, 0, 9999);
+        ProjectileBlastRadius = ApplyFloatStat(ProjectileBlastRadius, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
 
     public void IncreaseProjectileRange(float amount)
     {
-        _projectileRange = ApplyFloatStat(_projectileRange, amount, 0, 9999);
+        ProjectileRange = ApplyFloatStat(ProjectileRange, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
     public void IncreaseProjectileSpeed(float amount)
     {
-        _projectileSpeed = ApplyFloatStat(_projectileSpeed, amount, 0, 9999);
+        ProjectileSpeed = ApplyFloatStat(ProjectileSpeed, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
     public void IncreaseProjectileFireRate(float amount)
     {
-        _projectileFireRate = ApplyFloatStat(_projectileFireRate, amount, 0, 9999);
+        ProjectileFireRate = ApplyFloatStat(ProjectileFireRate, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
     public void IncreaseMagazineSize(float amount)
     {
-        _magazineSize = ApplyFloatStat(_magazineSize, amount, 0, 9999);
+        MagazineSize = ApplyFloatStat(MagazineSize, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
     public void IncreaseReloadSpeed(float amount)
     {
-        _reloadSpeed = ApplyFloatStat(_reloadSpeed, amount, 0, 9999);
+        ReloadSpeed = ApplyFloatStat(ReloadSpeed, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
 

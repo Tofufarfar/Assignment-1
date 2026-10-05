@@ -5,10 +5,10 @@ public class MeleeStats : Stats
 {
     [SerializeField] MeleeWeaponData _meleeWeaponData;
 
-    public float _damage { get; private set; }
-    public float _size { get; private set; }
-    public float _swing { get; private set; }
-    public float _arc { get; private set; }
+    public float Damage { get; private set; }
+    public float Size { get; private set; }
+    public float Swing { get; private set; }
+    public float Arc { get; private set; }
     //float LifeLeech => _meleeWeaponData.LifeLeech;
 
     public event Action OnMeleeStatChanged;
@@ -16,10 +16,10 @@ public class MeleeStats : Stats
     void Awake()
     {
 
-        _damage = _meleeWeaponData.BaseDamage;
-        _size = _meleeWeaponData.WeaponSize;
-        _swing = _meleeWeaponData.SwingTimer;
-        _arc = _meleeWeaponData.Arc;
+        Damage = _meleeWeaponData.BaseDamage;
+        Size = _meleeWeaponData.WeaponSize;
+        Swing = _meleeWeaponData.SwingTimer;
+        Arc = _meleeWeaponData.Arc;
     }
     void Start()
     {
@@ -34,22 +34,22 @@ public class MeleeStats : Stats
     }
     public void IncreaseDamage(int amount) 
     {
-        _damage = ApplyFloatStat(_damage, amount, 0, 9999);
+        Damage = ApplyFloatStat(Damage, amount, 0, 9999);
         OnMeleeStatChanged?.Invoke();
     } 
     public void IncreaseSize(float amount) 
     {
-        _size = ApplyFloatStat(_size, amount, 0, 0.99f);
+        Size = ApplyFloatStat(Size, amount, 0, 0.99f);
         OnSizeStatChanged?.Invoke();
     }
     public void IncreaseSwingSpeed(int amount) 
     {
-        _swing = ApplyFloatStat(_swing, amount, 0, 9999);
+        Swing = ApplyFloatStat(Swing, amount, 0, 9999);
         OnMeleeStatChanged?.Invoke();
     }
     public void IncreaseArc(int amount) 
     {
-        _arc = ApplyFloatStat(_arc, amount, 0, 360);
+        Arc = ApplyFloatStat(Arc, amount, 0, 360);
         OnMeleeStatChanged?.Invoke();
     } 
 

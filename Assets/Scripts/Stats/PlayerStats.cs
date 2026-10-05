@@ -5,21 +5,21 @@ public class PlayerStats : Stats
 {
     [SerializeField] PlayerClassData _playerUpgradeData;
 
-    public float _maxHealth { get; private set; }
-    public int _percentageXPGain { get; private set; }
-    public int _armor { get; private set; }
-    public int _vacuumEffect { get; private set; }
-    public float _movementSpeed { get; private set; }
-    
+    public float MaxHealth { get; private set; }
+    public int PercentageXPGain { get; private set; }
+    public int Armor { get; private set; }
+    public int VacuumEffect { get; private set; }
+    public float MovementSpeed { get; private set; }
+
     public event Action OnPlayerStatsChanged;
 
     void Awake()
     {
-        _maxHealth = _playerUpgradeData.MaxHealth;
-        _percentageXPGain = _playerUpgradeData.XPGain;
-        _movementSpeed = _playerUpgradeData.MoveSpeed;
-        _vacuumEffect = _playerUpgradeData.Vacuum;
-        _armor = _playerUpgradeData.Armor;
+        MaxHealth = _playerUpgradeData.MaxHealth;
+        PercentageXPGain = _playerUpgradeData.XPGain;
+        MovementSpeed = _playerUpgradeData.MoveSpeed;
+        VacuumEffect = _playerUpgradeData.Vacuum;
+        Armor = _playerUpgradeData.Armor;
     }
 
     void Start()
@@ -36,27 +36,27 @@ public class PlayerStats : Stats
 
     public void IncreaseMaxHealth(float amount) 
     {
-        _maxHealth = ApplyFloatStat(_maxHealth, amount, 1, 9999);
+        MaxHealth = ApplyFloatStat(MaxHealth, amount, 1, 9999);
         OnPlayerStatsChanged?.Invoke();
     }
     public void IncreaseXPGain(int amount)
     {
-        _percentageXPGain = ApplyIntStat(_percentageXPGain, amount, 0, 1000);
+        PercentageXPGain = ApplyIntStat(PercentageXPGain, amount, 0, 1000);
         OnPlayerStatsChanged?.Invoke();
     }
     public void IncreaseArmor(int amount) 
     {
-        _armor = ApplyIntStat(_armor, amount, 0, 1000);
+        Armor = ApplyIntStat(Armor, amount, 0, 1000);
         OnPlayerStatsChanged?.Invoke();
     }
     public void IncreaseVacuumEffect(int amount)
     {
-        _vacuumEffect = ApplyIntStat(_vacuumEffect, amount, 0, 100);
+        VacuumEffect = ApplyIntStat(VacuumEffect, amount, 0, 100);
         OnPlayerStatsChanged?.Invoke();
     }
     public void IncreaseMovementSpeed(float amount)
     {
-        _movementSpeed = ApplyFloatStat(_movementSpeed, amount, 0, 15);
+        MovementSpeed = ApplyFloatStat(MovementSpeed, amount, 0, 15);
         OnPlayerStatsChanged?.Invoke();
     }
 

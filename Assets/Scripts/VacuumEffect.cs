@@ -21,7 +21,7 @@ public class VacuumEffect : MonoBehaviour
 
     public void IncreaseVacuumSize()
     {
-        float size = _pStats._vacuumEffect;
+        float size = _pStats.VacuumEffect;
         transform.localScale = new Vector3(size,size, 1f);
     }
 

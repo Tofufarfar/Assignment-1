@@ -23,7 +23,6 @@ public class MeleeWeapon : WeaponManager
     }
     void IncreaseSize()
     {
-        animator.SetFloat("Step", _meleeStats._size);
-
+        animator.SetFloat("Step", _meleeStats.Size);
     }
 }

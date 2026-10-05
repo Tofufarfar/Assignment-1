@@ -71,9 +71,9 @@ public class LevelUpMenu : MonoBehaviour
         for (var i = 0; i < options.Length; i++)
         {
             var opt = options[i];
-            _optionsTexts[i].text = (options[i].UpgradeIncrement > 0) ?
-            (options[i].GetUpgradeTypeName() + '+' + options[i].UpgradeIncrement).ToString() +'%' :
-            "";
+            _optionsTexts[i].text = (options[i].UpgradeIncrement >= 1) ?
+            (options[i].UpgradeDescription + " +" + options[i].UpgradeIncrement):
+            (options[i].UpgradeDescription + " +" + options[i].UpgradeIncrement * 100);
             _optionsButtons[i].interactable = true;
             _optionsButtons[i].image.color = GetColorForRarity(opt.Rarity);
             _currentOptions = options;
