@@ -22,6 +22,7 @@ public class UpgradeData : ScriptableObject
     [field: SerializeField] public float UpgradeIncrement { get; private set; }
     [field: SerializeField] public UpgradeCategory Category { get; private set; }
     [field: SerializeField] public string UpgradeDescription { get; private set; }
+    [field: SerializeField] public Sprite UpgradeIcon { get; private set; }
 
     public virtual string GetUpgradeTypeName() => string.Empty;
     public virtual void ApplyUpgrade(Stats stats) { }
