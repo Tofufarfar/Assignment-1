@@ -11767,6 +11767,10 @@ MonoBehaviour:
   - {fileID: 455181152}
   - {fileID: 2029154099}
   - {fileID: 192841}
+  _optionsImage:
+  - {fileID: 1239263583}
+  - {fileID: 831070997}
+  - {fileID: 1099487798}
   _optionsTexts:
   - {fileID: 205439833}
   - {fileID: 536268093}
