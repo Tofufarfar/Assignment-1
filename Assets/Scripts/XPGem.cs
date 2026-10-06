@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class XPGem : MonoBehaviour
+public class XPGem : MonoBehaviour, IPooledObject
 {
     Transform _target;
     float _currentSpeed;
@@ -35,9 +35,11 @@ public class XPGem : MonoBehaviour
         if (collision.TryGetComponent(out XP xp))
         {
             xp.CalculateXP();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
-
     }
 
+    public void OnObjectSpawned()
+    { 
+    }
 }

@@ -19,49 +19,99 @@ public class ObjectPooler : MonoBehaviour
         Instance = this;
     }
     public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
+    private Dictionary<string, GameObject> prefabDictionary;
+    public Dictionary<string, List<GameObject>> poolDictionary;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        poolDictionary = new Dictionary<string, List<GameObject>>();
+        prefabDictionary = new Dictionary<string, GameObject>();
 
         foreach (Pool pool in pools)
         {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
+            List<GameObject> objectPool = new List<GameObject>();
 
             for (int i = 0; i < pool.size; i++)
             {
+
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
-                objectPool.Enqueue(obj);
+                objectPool.Add(obj);
             }
-
+            prefabDictionary.Add(pool.tag, pool.prefab);
             poolDictionary.Add(pool.tag, objectPool);
         }
     }
 
-    public GameObject SpawnFromPool (string tag, Vector2 position)
+    public GameObject SpawnFromPool(string tag, Vector2 position)
     {
-        if(!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(tag))
         {
             Debug.LogWarning("Pool with tag " + tag + " doesn't excist.");
             return null;
         }
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        List<GameObject> list = poolDictionary[tag];
 
-        objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = position;
-
-        IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
-
-        if (pooledObj != null)
+        for (int i = 0; i < list.Count; i++)
         {
-            pooledObj.OnObjectSpawned();
+            GameObject candidate = list[i];
+            if (!candidate.activeInHierarchy)
+            {
+
+                candidate.transform.position = position;
+                candidate.SetActive(true);
+                IPooledObject pooledObj = candidate.GetComponent<IPooledObject>();
+                pooledObj?.OnObjectSpawned();
+                return candidate;
+            }
         }
 
-        poolDictionary[tag].Enqueue(objectToSpawn);
-
-        return objectToSpawn;
+        GameObject obj = Instantiate(prefabDictionary[tag]);
+        obj.transform.position = position;
+        obj.SetActive(true);
+        list.Add(obj);
+        IPooledObject newPooled = obj.GetComponent<IPooledObject>();
+        newPooled?.OnObjectSpawned();
+        return obj;
     }
-
 }
+        //Queue<GameObject> queue = poolDictionary[tag];
+        //GameObject obj;
+
+        //if(queue.Count > 0)
+        //{
+        //    obj = queue.Dequeue();
+        //}
+        //else
+        //{
+        //    obj = Instantiate(prefabDictionary[tag]);
+        //    poolDictionary[tag].Enqueue(obj);
+        //}
+
+        //obj.transform.position = position;
+        //obj.SetActive(true);
+
+        //IPooledObject pooledObj = obj.GetComponent<IPooledObject>();
+
+        //if (pooledObj != null)
+        //{
+        //    pooledObj.OnObjectSpawned();
+        //}
+
+        //poolDictionary[tag].Enqueue(obj);
+
+    //    return obj;
+    //}
+
+    //public void ReturnToPool(string tag, GameObject obj)
+    //{
+    //    if (!poolDictionary.ContainsKey(tag))
+    //    {
+    //        Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
+    //        return;
+    //    }
+
+    //    obj.SetActive(false);
+    //    //poolDictionary[tag].Enqueue(obj);
+//    //}
+//}

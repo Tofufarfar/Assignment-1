@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IPooledObject
 {
     [SerializeField] Transform player;
     [SerializeField] float speed = 2f;
@@ -49,7 +49,8 @@ public class EnemyAI : MonoBehaviour
             if (health.CurrentHP <= 0)
             {
                 gameObject.SetActive(false);
-                Instantiate(xpPrefab, transform.position, xpPrefab.transform.rotation);
+                ObjectPooler.Instance.SpawnFromPool("XPGem", transform.position);
+                //Instantiate(xpPrefab, transform.position, xpPrefab.transform.rotation);
                 Score.instance.AddScore(100);
             }
         }
@@ -61,4 +62,8 @@ public class EnemyAI : MonoBehaviour
         
     }
 
+    public void OnObjectSpawned()
+    {
+
+    }
 }

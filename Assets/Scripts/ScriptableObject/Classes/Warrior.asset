@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fca465295dc3a49bbd16d054224724, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  <MoveSpeed>k__BackingField: 2
+  <MoveSpeed>k__BackingField: 4
   <Vacuum>k__BackingField: 1
   <Armor>k__BackingField: 1
   <MaxHealth>k__BackingField: 50

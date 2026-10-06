@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea6932281401174696cd96ec4f0de97, type: 3}
   m_Name: New Ammo
   m_EditorClassIdentifier: Assembly-CSharp::Ammo
-  <Velocity>k__BackingField: 53.08
+  <Velocity>k__BackingField: 50.1
   <Mass>k__BackingField: 2.8
