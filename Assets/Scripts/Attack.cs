@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] MeleeStats _mStats;
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.SendMessage("ApplyDamage", _mStats.Damage, SendMessageOptions.DontRequireReceiver);
+        }
     }
 }

@@ -3810,6 +3810,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1087246164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087246161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b5c8b0d7afbda4583677ecd6dc5def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
+  _equippedWeapons: []
+  _meleeWeaponData: {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}
+  _meleeStats: {fileID: 2026633736}
+  animator: {fileID: 1087246162}
 --- !u!1 &1098610274
 GameObject:
   m_ObjectHideFlags: 0
@@ -10579,7 +10595,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7977596891371936492, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
   m_PrefabInstance: {fileID: 1046960325527374579}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1679188175
+--- !u!114 &1679188179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10588,13 +10604,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679188171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b5c8b0d7afbda4583677ecd6dc5def, type: 3}
+  m_Script: {fileID: 11500000, guid: 0009b9ead5d939d42a44c2ae0737b029, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
-  _equippedWeapons: []
-  _meleeWeaponData: {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}
-  _meleeStats: {fileID: 2026633736}
-  animator: {fileID: 1087246162}
+  m_EditorClassIdentifier: Assembly-CSharp::Attack
+  _mStats: {fileID: 2026633736}
 --- !u!4 &1688394179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7517041590889391513, guid: 7b03244394537894887fcd6483c51afd, type: 3}
@@ -11411,7 +11424,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948836626}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5b5c8b0d7afbda4583677ecd6dc5def, type: 3}
   m_Name: 
@@ -11419,7 +11432,7 @@ MonoBehaviour:
   _equippedWeapons: []
   _meleeWeaponData: {fileID: 11400000, guid: 731751af796b1bb4c99a1d7e5b6fcfcb, type: 2}
   _meleeStats: {fileID: 2026633736}
-  animator: {fileID: 0}
+  animator: {fileID: 1087246162}
 --- !u!4 &1948836628
 Transform:
   m_ObjectHideFlags: 0
@@ -12311,9 +12324,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6502622042116778875, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1087246162}
+    - targetCorrespondingSourceObject: {fileID: 6502622042116778875, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1087246164}
     - targetCorrespondingSourceObject: {fileID: 7977596891371936492, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1679188175}
+      addedObject: {fileID: 1679188179}
   m_SourcePrefab: {fileID: 100100000, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

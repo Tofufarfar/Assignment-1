@@ -6,10 +6,10 @@ public class MeleeWeapon : WeaponManager
     [SerializeField] MeleeWeaponData _meleeWeaponData;
     [SerializeField] MeleeStats _meleeStats;
     [SerializeField] Animator animator;
-
+ 
     private void Awake()
     {
-
+       
     }
 
     private void OnEnable()
@@ -24,13 +24,5 @@ public class MeleeWeapon : WeaponManager
     void IncreaseSize()
     {
         animator.SetFloat("Step", _meleeStats.Size);
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            collision.SendMessage("ApplyDamage", _meleeStats.Damage, SendMessageOptions.DontRequireReceiver);
-        }
     }
 }
