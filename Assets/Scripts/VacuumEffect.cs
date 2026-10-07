@@ -27,7 +27,7 @@ public class VacuumEffect : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out XPGem gem))
+        if (collision.TryGetComponent(out XPGem gem))
         { 
             gem.StartMagnet(transform.parent);
         }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4010426250490717385}
   m_Layer: 7
   m_Name: EnemyType1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720930a22a04b0b4787d8be6c0e4ee7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  player: {fileID: 2792173242432382963, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
-  speed: 2
+  _player: {fileID: 2792173242432382963, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
   xpPrefab: {fileID: 4858010506431399849, guid: 15381ffa5468a25488fd84c3940e9bc6, type: 3}
+  _enemyData: {fileID: 11400000, guid: 136a24ec8a2b88047b1517fecfa76b80, type: 2}
 --- !u!114 &4010426250490717385
 MonoBehaviour:
   m_ObjectHideFlags: 0

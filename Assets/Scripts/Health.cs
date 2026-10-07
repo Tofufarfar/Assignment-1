@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
         
     }
 
-    public void TakeDamage(float damage)
+    void ApplyDamage(float damage)
     {
         CurrentHP -= damage;
 

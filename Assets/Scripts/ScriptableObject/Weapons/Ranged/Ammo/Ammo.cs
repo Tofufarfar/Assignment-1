@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Weapons/Ammo")]
@@ -12,6 +13,7 @@ public class Ammo : ScriptableObject
     [Tooltip("Mass in kilograms")]
     [field: SerializeField] public float Mass { get; private set; }
 
-   public float GetKineticEnergy() => 0.5f * Mass * Mathf.Pow(Velocity, 2);
+   public float KineticEnergyDamage() => 0.5f * Mass * Mathf.Pow(Velocity, 2);
+
     //public float GetKineticBlastRadius() => Mathf.Sqrt(GetKineticEnergy()) * 0.1f * _rStats.ProjectileBlastRadius;
 }

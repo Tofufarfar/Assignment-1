@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   Ammo: {fileID: 11400000, guid: 4748be3adaff6ac458774385f6390024, type: 2}
+  health: {fileID: 4010426250490717385, guid: 7b03244394537894887fcd6483c51afd, type: 3}
 --- !u!96 &-8859300641507881467
 TrailRenderer:
   serializedVersion: 4

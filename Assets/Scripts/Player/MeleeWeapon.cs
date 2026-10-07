@@ -25,4 +25,12 @@ public class MeleeWeapon : WeaponManager
     {
         animator.SetFloat("Step", _meleeStats.Size);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.SendMessage("ApplyDamage", _meleeStats.Damage, SendMessageOptions.DontRequireReceiver);
+        }
+    }
 }

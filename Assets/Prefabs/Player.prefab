@@ -901,6 +901,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57b5d8d314de1e40893cf1de081f891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  mStats: {fileID: 0}
+  rStats: {fileID: 0}
+  pStats: {fileID: 0}
   weapon: {fileID: 6748453844645910506}
 --- !u!114 &2170502570455167663
 MonoBehaviour:

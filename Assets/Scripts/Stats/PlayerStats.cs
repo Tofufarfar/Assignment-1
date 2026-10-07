@@ -15,9 +15,9 @@ public class PlayerStats : Stats
 
     void Awake()
     {
-        MaxHealth = _playerUpgradeData.MaxHealth;
+        MaxHealth = _playerUpgradeData.MaxHP;
         PercentageXPGain = _playerUpgradeData.XPGain;
-        MovementSpeed = _playerUpgradeData.MoveSpeed;
+        MovementSpeed = _playerUpgradeData.MovementSpeed;
         VacuumEffect = _playerUpgradeData.Vacuum;
         Armor = _playerUpgradeData.Armor;
     }

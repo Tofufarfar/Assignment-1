@@ -3,63 +3,79 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour, IPooledObject
+public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
 {
-    [SerializeField] Transform player;
-    [SerializeField] float speed = 2f;
+    [SerializeField] Transform _player;
     [SerializeField] private GameObject xpPrefab;
-    Rigidbody2D rb;
-    Health health;
-    Vector2 moveDirection;
+    [SerializeField] EnemyData _enemyData;
+    float _speed, _maxHP, _dmg;
+    int _score;
+    Rigidbody2D _rb;
+    Health _health;
+    Vector2 _moveDirection;
 
-    private InGameTimer igt;
-
-    public Action<int> EnemyDeathScore;
+    private InGameTimer _igt;
 
     private void Awake()
     {
-        health = GetComponent<Health>();
+        _health = GetComponent<Health>();
+        _speed = _enemyData.MovementSpeed;
+        _score = _enemyData.ScoreValue;
+        _maxHP = _enemyData.MaxHP;
+        _dmg = _enemyData.BaseDamage;
+    }
+
+    void OnEnable()
+    {
+        _health.OnDeath += HandleDeath;
+    }
+
+    void OnDisable()
+    {
+        _health.OnDeath -= HandleDeath;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
+        _player = GameObject.Find("Player").transform;
+        _rb = GetComponent<Rigidbody2D>();
 
     }
 
     private void Update()
     {
-        Vector3 direction = (player.position - transform.position).normalized;
-        moveDirection = direction;
+        Vector3 direction = (_player.position - transform.position).normalized;
+        _moveDirection = direction;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y) * speed;
+        _rb.linearVelocity = new Vector2(_moveDirection.x, _moveDirection.y) * _speed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Weapon"))
+    //    {
+    //        gameObject.SendMessage("ApplyDamage", )
+    //    }
+        
+    //}
+
+    void HandleDeath()
     {
-        if (collision.gameObject.CompareTag("Weapon"))
+        gameObject.SetActive(false);
+        ObjectPooler.Instance.SpawnFromPool("XPGem", transform.position);
+        Score.Instance.AddScore(_score);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision2D)
+    {
+        if (collision2D.gameObject.tag == "Player")
         {
-            // TODO : Add damage value to weapon and use it here instead of 1f
-            health.TakeDamage(1f);
-            if (health.CurrentHP <= 0)
-            {
-                gameObject.SetActive(false);
-                ObjectPooler.Instance.SpawnFromPool("XPGem", transform.position);
-                //Instantiate(xpPrefab, transform.position, xpPrefab.transform.rotation);
-                Score.instance.AddScore(100);
-            }
+            collision2D.gameObject.SendMessage("ApplyDamage", _dmg, SendMessageOptions.DontRequireReceiver);
         }
-        
-    }
-
-    void IncreasePower()
-    {
-        
     }
 
     public void OnObjectSpawned()

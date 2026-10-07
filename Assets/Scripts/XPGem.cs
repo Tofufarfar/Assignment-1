@@ -40,6 +40,7 @@ public class XPGem : MonoBehaviour, IPooledObject
     }
 
     public void OnObjectSpawned()
-    { 
+    {
+        _currentSpeed = _startSpeed;
     }
 }

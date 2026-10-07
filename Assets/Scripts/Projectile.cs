@@ -10,8 +10,8 @@ public class Projectile : MonoBehaviour, IPooledObject
     Rigidbody2D rb;
     SpriteRenderer sr;
     TrailRenderer tr;
+    [SerializeField] Health health;
     bool isHit = false;
-    public float rotationOffset = -45f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -45,17 +45,16 @@ public class Projectile : MonoBehaviour, IPooledObject
         {
             isHit = true;
             transform.position = hit.point;
-            Debug.Log($"Hit {hit.collider.name}");
             sr.enabled = false;
-            //ObjectPooler.Instance.ReturnToPool("Projectiles", gameObject);
             if(sr != null) sr.enabled = false;
             if (tr != null) tr.emitting = false;
+            hit.collider.SendMessage("ApplyDamage", Ammo.KineticEnergyDamage(), SendMessageOptions.DontRequireReceiver);
+            //float dmg = Ammo.GetKineticEnergy();
+            //health.TakeDamage(dmg);
             Invoke(nameof(SetFalse), 1f);
-            //ApplyDamage(hit.collider.gameObject);
         }
 
-        rb.MovePosition(transform.position + transform.right * step);
-        //transform.Translate(transform.right * step, Space.World);
+        rb.linearVelocity = transform.right * Ammo.Velocity;
 
     }
 
@@ -82,10 +81,6 @@ public class Projectile : MonoBehaviour, IPooledObject
             : transform.position;
         Vector3 direction = (mouseWorld - transform.position);
         float rotationZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //mousePos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        //Vector3 rotation = transform.position - mousePos;
-        //float rotationZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.Euler(0f, 0f, rotationZ + 180);
         transform.SetParent(null);
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
 
