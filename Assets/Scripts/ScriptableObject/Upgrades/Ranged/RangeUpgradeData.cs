@@ -35,7 +35,7 @@ public class RangeUpgradeData : UpgradeData
                     rangedStats.IncreaseProjectileFireRate(UpgradeIncrement);
                     break;
                 case TypeOfUpgrade.MagazineSize:
-                    rangedStats.IncreaseMagazineSize(UpgradeIncrement);
+                    rangedStats.IncreaseMagazineSize((int)UpgradeIncrement);
                     break;
                 case TypeOfUpgrade.ReloadTime:
                     rangedStats.IncreaseReloadSpeed(UpgradeIncrement);

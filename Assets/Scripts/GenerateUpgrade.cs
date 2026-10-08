@@ -11,6 +11,11 @@ public class GenerateUpgrade : MonoBehaviour
     void Start()
     {
         GenerateAndPickOption();
+        for(var i = 0; i < _meleeUpgradePool.Length; i++)
+        {
+            Debug.Log(_meleeUpgradePool[i].UpgradeType);
+        }
+        
     }
 
     UpgradeData.RarityType RarityRoll()
@@ -19,11 +24,11 @@ public class GenerateUpgrade : MonoBehaviour
 
         if (_rarityRoll <= 0.5)
         {
-            return UpgradeData.RarityType.Uncommon;
+            return UpgradeData.RarityType.Common;
         }
         if (_rarityRoll <= 0.80)
         {
-            return UpgradeData.RarityType.Common;
+            return UpgradeData.RarityType.Uncommon;
         }
         if (_rarityRoll <= 0.95)
         {
@@ -57,4 +62,10 @@ public class GenerateUpgrade : MonoBehaviour
 
         return options.ToArray();
     }
+
+    private void RemoveFromPool(UpgradeData.UpgradeCategory category)
+    {
+        var remove = category;
+        //TODO
+    }   
 }

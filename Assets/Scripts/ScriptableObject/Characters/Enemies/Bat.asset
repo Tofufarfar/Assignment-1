@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9caf1ac144376594bab7ef1bd8fb267d, type: 3}
-  m_Name: Goblin
+  m_Name: Bat
   m_EditorClassIdentifier: Assembly-CSharp::SO_Enemy
-  <MaxHP>k__BackingField: 1
-  <MovementSpeed>k__BackingField: 1
+  <MaxHP>k__BackingField: 2
+  <MovementSpeed>k__BackingField: 3
   <BaseDamage>k__BackingField: 0.1
   <ScoreValue>k__BackingField: 50
+  <MeleeResist>k__BackingField: 0
+  <RangeResist>k__BackingField: 0

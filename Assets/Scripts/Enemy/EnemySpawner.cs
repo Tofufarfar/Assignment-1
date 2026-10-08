@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    [SerializeField] EnemyData[] _enemyData;
+    [SerializeField] Transform _player;
     [SerializeField] float _minSpawnRadius = 9f;
     [SerializeField] float _maxSpawnRadius = 33f;
     [SerializeField] float _baseSpawnInterval = 1f;
@@ -25,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     {
         float currentTime = InGameTimer.ElapsedTime;
 
-        if (objectPooler == null || player == null) return;
+        if (objectPooler == null || _player == null) return;
 
         if (currentTime >= nextDifficultyIncrease)
         {
@@ -42,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
 
     Vector2 SpawnLocation()
     {
-        Vector2 playerPos = player.position;
+        Vector2 playerPos = _player.position;
         float angle = UnityEngine.Random.Range(0, Mathf.PI * 2f);
         float radius = Mathf.Sqrt(UnityEngine.Random.Range(_minSpawnRadius * _minSpawnRadius, _maxSpawnRadius * _maxSpawnRadius));
 

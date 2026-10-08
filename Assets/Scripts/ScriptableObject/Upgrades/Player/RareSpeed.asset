@@ -15,5 +15,6 @@ MonoBehaviour:
   <Rarity>k__BackingField: 2
   <UpgradeIncrement>k__BackingField: 0.3
   <Category>k__BackingField: 2
-  <UpgradeDescription>k__BackingField: Move Speed
+  <UpgradeDescription>k__BackingField: Move Speed +3
+  <UpgradeIcon>k__BackingField: {fileID: -415928058, guid: 8e5bdb5d3951f6f4d94c99f6e909af6f, type: 3}
   <UpgradeType>k__BackingField: 0

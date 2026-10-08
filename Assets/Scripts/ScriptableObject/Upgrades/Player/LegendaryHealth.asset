@@ -15,5 +15,6 @@ MonoBehaviour:
   <Rarity>k__BackingField: 4
   <UpgradeIncrement>k__BackingField: 20
   <Category>k__BackingField: 2
-  <UpgradeDescription>k__BackingField: Health
+  <UpgradeDescription>k__BackingField: Health +20
+  <UpgradeIcon>k__BackingField: {fileID: 34449927, guid: 8e5bdb5d3951f6f4d94c99f6e909af6f, type: 3}
   <UpgradeType>k__BackingField: 1

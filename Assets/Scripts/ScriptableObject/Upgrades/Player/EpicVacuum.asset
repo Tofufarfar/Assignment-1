@@ -15,5 +15,6 @@ MonoBehaviour:
   <Rarity>k__BackingField: 3
   <UpgradeIncrement>k__BackingField: 5
   <Category>k__BackingField: 2
-  <UpgradeDescription>k__BackingField: Vacuum
+  <UpgradeDescription>k__BackingField: Vacuum +5
+  <UpgradeIcon>k__BackingField: {fileID: -1712657334, guid: 8e5bdb5d3951f6f4d94c99f6e909af6f, type: 3}
   <UpgradeType>k__BackingField: 3

@@ -10,17 +10,15 @@ public class Shooting : MonoBehaviour
     [SerializeField] Ammo _ammo;
     Camera mainCam;
     Vector3 mousePos;
-    bool isShooting;
     bool canFire = true;
+    bool waitingForFireRate = false;
     int _quiver;
-    bool isReloading;
-    float reloadTime = 1f;
-    float shootCooldown = 0.5f;
     float timer = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        _quiver = _rangeStats.MagazineSize;
     }
 
     // Update is called once per frame
@@ -36,24 +34,34 @@ public class Shooting : MonoBehaviour
 
         if(!canFire)
         {
-            canFire = false;
-            isReloading = true;
             timer += Time.deltaTime;
-            if (timer >= reloadTime)
+            if (timer >= _rangeStats.ReloadSpeed)
             {
                 canFire = true;
-                isReloading = false;
+                Reload();
                 timer = 0f;
             }
         }
 
-        if (canFire)
+        if(waitingForFireRate)
         {
-            Invoke(nameof(Shoot), shootCooldown);
-            _quiver = _rangeStats.MagazineSize;
-            if(_rangeStats.MagazineSize == 0)
+            timer += Time.deltaTime;
+            if(timer >= _rangeStats.ProjectileFireRate)
+            {
+                waitingForFireRate = false;
+                timer = 0f;
+            }
+        }
+
+        if(canFire && _quiver > 0 && !waitingForFireRate)
+        {
+            Shoot();
+            _quiver--;
+            waitingForFireRate = true;
+            if(_quiver == 0)
             {
                 canFire = false;
+                timer = 0f;
             }
         }
     }
@@ -62,5 +70,10 @@ public class Shooting : MonoBehaviour
     {
         var projectile = ObjectPooler.Instance.SpawnFromPool("Projectiles", _firePoint.position);
         projectile.GetComponent<Projectile>().Ammo = _ammo;
+    }
+
+    void Reload()
+    {
+        _quiver = _rangeStats.MagazineSize;
     }
 }

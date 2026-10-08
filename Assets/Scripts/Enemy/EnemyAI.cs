@@ -54,15 +54,6 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
         _rb.linearVelocity = new Vector2(_moveDirection.x, _moveDirection.y) * _speed;
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Weapon"))
-    //    {
-    //        gameObject.SendMessage("ApplyDamage", )
-    //    }
-        
-    //}
-
     void HandleDeath()
     {
         gameObject.SetActive(false);

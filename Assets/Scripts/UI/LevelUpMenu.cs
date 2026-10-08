@@ -6,16 +6,22 @@ using UnityEngine.UI;
 public class LevelUpMenu : MonoBehaviour
 {
     public bool isLevelUpScreen { get; private set; } = false;
+    public bool isAutoUpgrade { get; private set; } = false;
 
     [SerializeField] GameObject _levelUpMenuToHide;
     [SerializeField] Button[] _optionsButtons;
+    [SerializeField] Button _autoUpgradeButton;
     [SerializeField] Image[] _optionsImage;
+    [SerializeField] Image _buttonImage;
     [SerializeField] TextMeshProUGUI[] _optionsTexts;
     [SerializeField] Color[] _colors;
+    [SerializeField] Color _on, _off;
 
     [SerializeField] PlayerStats _playerStats;
     [SerializeField] XP _xp;
     [SerializeField] GenerateUpgrade _generateUpgrade;
+
+
 
     UpgradeData[] _currentOptions;
 
@@ -23,6 +29,7 @@ public class LevelUpMenu : MonoBehaviour
     {
         _xp.OnPlayerLevelUp += ShowLevelUpScreen;
         _xp.OnPlayerLevelUp += AddListenersToButtons;
+        _autoUpgradeButton.onClick.AddListener(ToggleAutoUpgrade);
     }
 
     void Start()
@@ -32,10 +39,18 @@ public class LevelUpMenu : MonoBehaviour
 
     private void AddListenersToButtons()
     {
-        for (int i = 0; i < _optionsButtons.Length; i++)
+        if(!isAutoUpgrade)
         {
-            int j = i;
-            _optionsButtons[i].onClick.AddListener(() => ApplySelectedOption(j));
+            for (int i = 0; i < _optionsButtons.Length; i++)
+            {
+                int j = i;
+                _optionsButtons[i].onClick.AddListener(() => ApplySelectedOption(j));
+            }
+        }
+        else
+        {
+            int rand = UnityEngine.Random.Range(0, 2);
+            ApplySelectedOption(rand);
         }
     }
 
@@ -49,13 +64,25 @@ public class LevelUpMenu : MonoBehaviour
         _xp.OnPlayerLevelUp -= ShowLevelUpScreen;
         _xp.OnPlayerLevelUp -= AddListenersToButtons;
     }
+    private void ToggleAutoUpgrade()
+    {
+        isAutoUpgrade = !isAutoUpgrade;
+        ToggleColor();
+    }
 
+    private void ToggleColor()
+    {
+        _buttonImage.color = isAutoUpgrade ? _on : _off; 
+    }
     public void ShowLevelUpScreen()
     {
         GetAndChooseUpgrade();
-        isLevelUpScreen = true;
-        _levelUpMenuToHide.SetActive(true);
-        Time.timeScale = 0f;
+        if (!isAutoUpgrade)
+        {
+            isLevelUpScreen = true;
+            _levelUpMenuToHide.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 
     public void HideLevelUpScreen()
@@ -69,18 +96,19 @@ public class LevelUpMenu : MonoBehaviour
     {
         UpgradeData[] options = _generateUpgrade.GenerateAndPickOption();
 
-        for (var i = 0; i < options.Length; i++)
+        if (!isAutoUpgrade)
         {
-            var opt = options[i];
-            _optionsImage[i].sprite = options[i].UpgradeIcon;
-            _optionsTexts[i].text = options[i].UpgradeDescription;
-            //_optionsTexts[i].text = (options[i].UpgradeIncrement >= 1) ?
-            //(options[i].UpgradeDescription + " +" + options[i].UpgradeIncrement):
-            //(options[i].UpgradeDescription + " +" + options[i].UpgradeIncrement * 100);
-            _optionsButtons[i].interactable = true;
-            _optionsButtons[i].image.color = GetColorForRarity(opt.Rarity);
-            _currentOptions = options;
+            for (var i = 0; i < options.Length; i++)
+            {
+                var opt = options[i];
+                _optionsImage[i].sprite = options[i].UpgradeIcon;
+                _optionsTexts[i].text = options[i].UpgradeDescription;
+                _optionsButtons[i].interactable = true;
+                _optionsButtons[i].image.color = GetColorForRarity(opt.Rarity);
+                _currentOptions = options;
+            }
         }
+        
     }
     void ApplySelectedOption(int index)
     {
@@ -89,8 +117,11 @@ public class LevelUpMenu : MonoBehaviour
         var opt = _currentOptions[index];
         var targetStats = UpgradeManager.Instance.GetStatsForCategory(opt.Category);
         opt.ApplyUpgrade(targetStats);
-        HideLevelUpScreen();
-        RemoveListenersFromButtons();
+        if (!isAutoUpgrade)
+        {
+            HideLevelUpScreen();
+            RemoveListenersFromButtons();
+        }
     }
 
     private void RemoveListenersFromButtons()

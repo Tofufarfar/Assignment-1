@@ -9,7 +9,7 @@ public class RangeStats : Stats
     public float ProjectileRange { get; private set; }
     public float ProjectileSpeed { get; private set; }
     public float ProjectileFireRate { get; private set; }
-    public float MagazineSize { get; private set; }
+    public int MagazineSize { get; private set; }
     public float ReloadSpeed { get; private set; }
 
     public event Action OnRangeStatsChanged;
@@ -63,9 +63,9 @@ public class RangeStats : Stats
         ProjectileFireRate = ApplyFloatStat(ProjectileFireRate, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
-    public void IncreaseMagazineSize(float amount)
+    public void IncreaseMagazineSize(int amount)
     {
-        MagazineSize = ApplyFloatStat(MagazineSize, amount, 0, 9999);
+        MagazineSize = ApplyIntStat(MagazineSize, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
     public void IncreaseReloadSpeed(float amount)
