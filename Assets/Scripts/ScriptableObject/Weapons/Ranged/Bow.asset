@@ -18,6 +18,6 @@ MonoBehaviour:
   <ProjectileBlastRadius>k__BackingField: 1
   <ProjectileRange>k__BackingField: 2
   <ProjectileSpeed>k__BackingField: 1
-  <FireRate>k__BackingField: 1
-  <MagazineSize>k__BackingField: 1
-  <ReloadTime>k__BackingField: 1
+  <FireRate>k__BackingField: 0.2
+  <MagazineSize>k__BackingField: 3
+  <ReloadSpeed>k__BackingField: 1

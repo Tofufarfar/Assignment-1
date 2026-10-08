@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
     Vector3 mousePos;
     bool isShooting;
     bool canFire = true;
+    int _quiver;
     bool isReloading;
     float reloadTime = 1f;
     float shootCooldown = 0.5f;
@@ -48,8 +49,12 @@ public class Shooting : MonoBehaviour
 
         if (canFire)
         {
-            Shoot();
-            canFire = false;
+            Invoke(nameof(Shoot), shootCooldown);
+            _quiver = _rangeStats.MagazineSize;
+            if(_rangeStats.MagazineSize == 0)
+            {
+                canFire = false;
+            }
         }
     }
 
