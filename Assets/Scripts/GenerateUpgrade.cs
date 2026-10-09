@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GenerateUpgrade : MonoBehaviour
 {
@@ -63,9 +64,8 @@ public class GenerateUpgrade : MonoBehaviour
         return options.ToArray();
     }
 
-    private void RemoveFromPool(UpgradeData.UpgradeCategory category)
+    private void RemoveFromPool(UpgradeData[] pool, UpgradeData.UpgradeCategory categoryToRemove)
     {
-        var remove = category;
-        //TODO
+        GameObject[] updatedPool = pool.UpgradeCategory.Where(x => x <= categoryToRemove).ToArray();
     }   
 }
