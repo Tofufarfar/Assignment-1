@@ -13,8 +13,17 @@ public class MeleeUpgradeData : UpgradeData
     }
     [field: SerializeField] public TypeOfUpgrade UpgradeType { get; private set; }
 
-
+    public override Enum GetUpgradeType() => UpgradeType;
     public override string GetUpgradeTypeName() => UpgradeType.ToString();
+    public override bool IsMaxed(Stats stats)
+    {
+        var melee = (MeleeStats)stats;
+        return UpgradeType switch
+        {
+            TypeOfUpgrade.Size => melee.Size >= melee.,
+            _ => false
+        };
+    }
     public override void ApplyUpgrade(Stats stats)
     {
         if (stats is MeleeStats meleeStats)

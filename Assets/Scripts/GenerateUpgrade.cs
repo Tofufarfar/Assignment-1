@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class GenerateUpgrade : MonoBehaviour
 
     UpgradeData.RarityType RarityRoll()
     {
-        float _rarityRoll = Random.value;
+        float _rarityRoll = UnityEngine.Random.value;
 
         if (_rarityRoll <= 0.5)
         {
@@ -47,7 +48,7 @@ public class GenerateUpgrade : MonoBehaviour
     {
         var matches = pool.Where(u => u.Rarity == rarity).ToArray();
         if (matches.Length == 0) matches = pool;
-        return matches[Random.Range(0, matches.Length)];
+        return matches[UnityEngine.Random.Range(0, matches.Length)];
     }
 
     public UpgradeData[] GenerateAndPickOption()
@@ -64,8 +65,19 @@ public class GenerateUpgrade : MonoBehaviour
         return options.ToArray();
     }
 
-    private void RemoveFromPool(UpgradeData[] pool, UpgradeData.UpgradeCategory categoryToRemove)
+    public void RemoveFromPoolOnMaxxedOut(UpgradeData upgrade)
     {
-        GameObject[] updatedPool = pool.UpgradeCategory.Where(x => x <= categoryToRemove).ToArray();
-    }   
+        var type = upgrade.GetUpgradeType();
+        switch (upgrade.Category)
+        {
+            case UpgradeData.UpgradeCategory.Melee: RemoveMatching(ref _meleeUpgradePool, type); break;
+            case UpgradeData.UpgradeCategory.Range: RemoveMatching(ref _rangeUpgradePool, type); break;
+            case UpgradeData.UpgradeCategory.Player: RemoveMatching(ref _playerUpgradePool, type); break;
+        }
+    }
+
+    static void RemoveMatching<T>(ref T[] pool, Enum type) where T : UpgradeData
+    {
+        pool = pool.Where(u => !Equals(u.GetUpgradeType(), type)).ToArray();
+    }
 }

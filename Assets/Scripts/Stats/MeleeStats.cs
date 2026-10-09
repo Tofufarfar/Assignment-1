@@ -4,6 +4,7 @@ using UnityEngine;
 public class MeleeStats : Stats
 {
     [SerializeField] MeleeWeaponData _meleeWeaponData;
+    [field: SerializeField] public float MaxSize { get; private set; } = 0.99f;
 
     public float Damage { get; private set; }
     public float Size { get; private set; }
@@ -39,7 +40,7 @@ public class MeleeStats : Stats
     } 
     public void IncreaseSize(float amount) 
     {
-        Size = ApplyFloatStat(Size, amount, 0, 0.99f);
+        Size = ApplyFloatStat(Size, amount, 0, MaxSize);
         OnSizeStatChanged?.Invoke();
     }
     public void IncreaseSwingSpeed(int amount) 

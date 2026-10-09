@@ -15,7 +15,18 @@ public class RangeUpgradeData : UpgradeData
     }
     [field: SerializeField] public TypeOfUpgrade UpgradeType { get; private set; }
 
+    public override Enum GetUpgradeType() => UpgradeType;
     public override string GetUpgradeTypeName() => UpgradeType.ToString();
+    public override bool IsMaxed(Stats stats)
+    {
+        var range = (RangeStats)stats;
+        return UpgradeType switch
+        {
+            TypeOfUpgrade.FireRate => range.ProjectileFireRate >= range.MinFireRate,
+            TypeOfUpgrade.ReloadTime => range.ReloadSpeed >= range.MinReloadSpeed,
+            _ => false
+        };
+    }
     public override void ApplyUpgrade(Stats stats)
     {
         if ( stats is RangeStats rangedStats)

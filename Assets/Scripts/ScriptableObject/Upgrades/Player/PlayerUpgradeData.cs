@@ -14,7 +14,19 @@ public class PlayerUpgradeData : UpgradeData
     }
     [field: SerializeField] public TypeOfUpgrade UpgradeType { get; private set; }
 
+    public override Enum GetUpgradeType() => UpgradeType;
     public override string GetUpgradeTypeName() => UpgradeType.ToString();
+
+    public override bool IsMaxed(Stats stats)
+    {
+        var player = (PlayerStats) stats;
+        return UpgradeType switch
+        {
+            TypeOfUpgrade.Movement => player.MovementSpeed >= player.MaxMovementSpeed,
+            TypeOfUpgrade.Vacuum => player.VacuumEffect >= player.MaxVacuumEffect,
+            _ => false
+        };
+    }
     public override void ApplyUpgrade(Stats stats)
     {
         if(stats is PlayerStats playerStats)

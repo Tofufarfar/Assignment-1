@@ -5,6 +5,8 @@ public class PlayerStats : Stats
 {
     [SerializeField] PlayerClassData _playerUpgradeData;
 
+    [field: SerializeField] public float MaxMovementSpeed { get; private set; } = 15f;
+    [field: SerializeField] public int MaxVacuumEffect { get; private set; } = 100;
     public float MaxHealth { get; private set; }
     public int PercentageXPGain { get; private set; }
     public int Armor { get; private set; }
@@ -51,12 +53,12 @@ public class PlayerStats : Stats
     }
     public void IncreaseVacuumEffect(int amount)
     {
-        VacuumEffect = ApplyIntStat(VacuumEffect, amount, 0, 100);
+        VacuumEffect = ApplyIntStat(VacuumEffect, amount, 0, MaxVacuumEffect);
         OnPlayerStatsChanged?.Invoke();
     }
     public void IncreaseMovementSpeed(float amount)
     {
-        MovementSpeed = ApplyFloatStat(MovementSpeed, amount, 0, 15);
+        MovementSpeed = ApplyFloatStat(MovementSpeed, amount, 0, MaxMovementSpeed);
         OnPlayerStatsChanged?.Invoke();
     }
 

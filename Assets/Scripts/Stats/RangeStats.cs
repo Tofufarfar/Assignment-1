@@ -4,6 +4,9 @@ using UnityEngine;
 public class RangeStats : Stats
 {
     [SerializeField] RangedWeaponData _rangedWeaponData;
+
+    [field: SerializeField] public float MinFireRate { get; private set; } = 0f;
+    [field: SerializeField] public float MinReloadSpeed { get; private set; } = 0f;
     public float Damage { get; private set; }
     public float ProjectileBlastRadius { get; private set; }
     public float ProjectileRange { get; private set; }
@@ -60,7 +63,7 @@ public class RangeStats : Stats
     }
     public void IncreaseProjectileFireRate(float amount)
     {
-        ProjectileFireRate = ApplyFloatStat(ProjectileFireRate, amount, 0, 9999);
+        ProjectileFireRate = ApplyFloatStat(ProjectileFireRate, amount, MinFireRate, 9999);
         OnRangeStatsChanged?.Invoke();
     }
     public void IncreaseMagazineSize(int amount)
@@ -70,7 +73,7 @@ public class RangeStats : Stats
     }
     public void IncreaseReloadSpeed(float amount)
     {
-        ReloadSpeed = ApplyFloatStat(ReloadSpeed, amount, 0, 9999);
+        ReloadSpeed = ApplyFloatStat(ReloadSpeed, amount, MinReloadSpeed, 9999);
         OnRangeStatsChanged?.Invoke();
     }
 
