@@ -63,6 +63,10 @@ public class RangeStats : Stats
     }
     public void IncreaseProjectileFireRate(float amount)
     {
+        if(amount <= MinFireRate)
+        {
+            _generateUpgrade.RemoveFromPool(upgrade);
+        }
         ProjectileFireRate = ApplyFloatStat(ProjectileFireRate, amount, MinFireRate, 9999);
         OnRangeStatsChanged?.Invoke();
     }
