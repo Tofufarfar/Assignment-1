@@ -4,8 +4,9 @@ using UnityEngine;
 public class MeleeStats : Stats
 {
     [SerializeField] MeleeWeaponData _meleeWeaponData;
-    [field: SerializeField] public float MaxSize { get; private set; } = 0.99f;
 
+    public float MaxSize { get; private set; } = 0.99f;
+    public float MaxSwing { get; private set; } = 1000;
     public float Damage { get; private set; }
     public float Size { get; private set; }
     public float Swing { get; private set; }
@@ -42,11 +43,20 @@ public class MeleeStats : Stats
     {
         Size = ApplyFloatStat(Size, amount, 0, MaxSize);
         OnSizeStatChanged?.Invoke();
+
+        if(Size >= MaxSize)
+        {
+           _generateUpgrade.RemoveFromPoolOnMaxxedOut(UpgradeData.UpgradeCategory.Melee, MeleeUpgradeData.TypeOfUpgrade.Size);
+        }
     }
     public void IncreaseSwingSpeed(int amount) 
     {
-        Swing = ApplyFloatStat(Swing, amount, 0, 9999);
+        Swing = ApplyFloatStat(Swing, amount, 0, MaxSwing);
         OnMeleeStatChanged?.Invoke();
+        if (Swing >= MaxSwing)
+        {
+            _generateUpgrade.RemoveFromPoolOnMaxxedOut(UpgradeData.UpgradeCategory.Melee, MeleeUpgradeData.TypeOfUpgrade.Swing);
+        }
     }
     public void IncreaseArc(int amount) 
     {

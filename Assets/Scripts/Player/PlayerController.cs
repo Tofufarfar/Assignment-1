@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour, IDamageble
     InputAction _moveAction;
     Rigidbody2D _rb;
     Health _health;
-    [SerializeField] private GameObject _weapon;
+    [SerializeField] GameObject _weapon;
     XP xp;
 
     private void Awake()
@@ -38,13 +38,4 @@ public class PlayerController : MonoBehaviour, IDamageble
         _rb.linearVelocity = moveValue * _pStats.MovementSpeed;
         
     }
-
-    //private void OnCollisionStay2D(Collision2D collision2D)
-    //{
-    //    if(collision2D.gameObject.tag == "Enemies")
-    //    {
-          
-    //    }
-    //}
-
 }

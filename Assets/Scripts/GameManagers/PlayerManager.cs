@@ -6,11 +6,17 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] GameObject _player;
     [SerializeField] Health _health;
+    [SerializeField] PlayerStats _pStats;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
 
+    }
+
+    private void Start()
+    {
+        _health.SetMaxHP(_pStats.MaxHealth);
     }
 
     private void OnEnable()

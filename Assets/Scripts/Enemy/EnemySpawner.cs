@@ -37,7 +37,9 @@ public class EnemySpawner : MonoBehaviour
         {
             float currentSpawnInterval = _baseSpawnInterval / currentDifficulty;
             nextSpawnTime = currentSpawnInterval + currentTime;
-            objectPooler.SpawnFromPool("Triangle", SpawnLocation());
+            float i = currentTime % _enemyData.Length;
+            objectPooler.SpawnFromPool(_enemyData[(int)i].Tag, SpawnLocation());
+            
         }
     }
 

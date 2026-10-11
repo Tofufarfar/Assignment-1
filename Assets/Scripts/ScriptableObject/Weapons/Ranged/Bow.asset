@@ -15,9 +15,10 @@ MonoBehaviour:
   <BaseDamage>k__BackingField: 1
   <Sprite>k__BackingField: {fileID: 0}
   <Rarity>k__BackingField: 0
+  <WeaponDamageType>k__BackingField: 1
   <ProjectileBlastRadius>k__BackingField: 1
   <ProjectileRange>k__BackingField: 2
   <ProjectileSpeed>k__BackingField: 1
-  <FireRate>k__BackingField: 0.2
-  <MagazineSize>k__BackingField: 3
-  <ReloadSpeed>k__BackingField: 1
+  <FireRate>k__BackingField: 0.5
+  <MagazineSize>k__BackingField: 1
+  <ReloadSpeed>k__BackingField: 2

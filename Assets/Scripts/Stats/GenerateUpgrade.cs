@@ -12,12 +12,7 @@ public class GenerateUpgrade : MonoBehaviour
 
     void Start()
     {
-        GenerateAndPickOption();
-        for(var i = 0; i < _meleeUpgradePool.Length; i++)
-        {
-            Debug.Log(_meleeUpgradePool[i].UpgradeType);
-        }
-        
+
     }
 
     UpgradeData.RarityType RarityRoll()
@@ -65,10 +60,10 @@ public class GenerateUpgrade : MonoBehaviour
         return options.ToArray();
     }
 
-    public void RemoveFromPoolOnMaxxedOut(UpgradeData upgrade)
+    public void RemoveFromPoolOnMaxxedOut(UpgradeData.UpgradeCategory category, Enum type)
     {
-        var type = upgrade.GetUpgradeType();
-        switch (upgrade.Category)
+        //var type = upgrade.GetUpgradeType();
+        switch (category)
         {
             case UpgradeData.UpgradeCategory.Melee: RemoveMatching(ref _meleeUpgradePool, type); break;
             case UpgradeData.UpgradeCategory.Range: RemoveMatching(ref _rangeUpgradePool, type); break;

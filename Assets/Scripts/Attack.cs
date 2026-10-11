@@ -7,7 +7,7 @@ public class Attack : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.SendMessage("ApplyDamage", _mStats.Damage, SendMessageOptions.DontRequireReceiver);
+            collision.SendMessage("ApplyMeleeDamage", _mStats.Damage, SendMessageOptions.DontRequireReceiver);
         }
     }
 }

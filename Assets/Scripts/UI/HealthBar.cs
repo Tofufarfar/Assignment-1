@@ -19,13 +19,15 @@ public class HealthBar : MonoBehaviour
     private void OnEnable()
     {
         hp.HPChanged += SetHPBar;
-        xp.OnPlayerLevelUp += hp.FullHeal;
+        //xp.OnPlayerLevelUp += hp.FullHeal;
+        hp.MaxHPChanged += SetMaxHPBar;
     }
 
     private void OnDisable()
     {
        hp.HPChanged -= SetHPBar;
-       xp.OnPlayerLevelUp -= hp.FullHeal;
+       //xp.OnPlayerLevelUp -= hp.FullHeal;
+       hp.MaxHPChanged -= SetMaxHPBar;
     }
     // Update is called once per frame
     void Update()
@@ -36,6 +38,11 @@ public class HealthBar : MonoBehaviour
     void SetHPBar(float currentHP)
     { 
         hpBar.value = currentHP;
+    }
+
+    void SetMaxHPBar(float maxHP)
+    {
+        hpBar.maxValue = maxHP;
     }
 
 }

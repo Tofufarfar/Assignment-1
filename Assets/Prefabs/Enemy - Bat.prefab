@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4869830527690359627}
   - component: {fileID: 5750214973207940710}
   - component: {fileID: 4010426250490717385}
+  - component: {fileID: -8839012157329601570}
   m_Layer: 7
   m_Name: Enemy - Bat
   m_TagString: Enemy
@@ -198,7 +199,7 @@ MonoBehaviour:
   _player: {fileID: 2792173242432382963, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
   xpPrefab: {fileID: 4858010506431399849, guid: 15381ffa5468a25488fd84c3940e9bc6, type: 3}
   _enemyData: {fileID: 11400000, guid: 136a24ec8a2b88047b1517fecfa76b80, type: 2}
-  _sprite: {fileID: 7013631516640934163, guid: b438465a32eb63243a7889eb1f400d29, type: 3}
+  anim: {fileID: -8839012157329601570}
 --- !u!114 &4010426250490717385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,4 +212,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ba7a87ae501a648b6d7b1caa1b9467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  <MaxHP>k__BackingField: 1
+  _enemyData: {fileID: 11400000, guid: 136a24ec8a2b88047b1517fecfa76b80, type: 2}
+--- !u!95 &-8839012157329601570
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960941488257257289}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec24e4ddfe3ded84495eefe4576cc9fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

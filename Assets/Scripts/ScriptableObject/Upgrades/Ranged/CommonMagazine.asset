@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CommonMagazine
   m_EditorClassIdentifier: Assembly-CSharp::RangeUpgradeData
   <Rarity>k__BackingField: 0
-  <UpgradeIncrement>k__BackingField: 2
+  <UpgradeIncrement>k__BackingField: 1
   <Category>k__BackingField: 1
-  <UpgradeDescription>k__BackingField: 'Capacity +2 '
+  <UpgradeDescription>k__BackingField: 'Capacity +1 '
   <UpgradeIcon>k__BackingField: {fileID: -1060082280, guid: 8e5bdb5d3951f6f4d94c99f6e909af6f, type: 3}
   <UpgradeType>k__BackingField: 4

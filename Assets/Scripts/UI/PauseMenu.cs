@@ -3,21 +3,21 @@ using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
-    public bool isPaused = false;
-    public GameObject pauseMenuUI;
-    InputAction pauseAction;
+    bool _isPaused = false;
+     GameObject _pauseMenuUI;
+    InputAction _pauseAction;
 
     private void Awake()
     {
-        pauseAction = InputSystem.actions.FindAction("Pause");
+        _pauseAction = InputSystem.actions.FindAction("Pause");
     }
 
     private void Update()
     {
-        if (pauseAction.WasPressedThisFrame())
+        if (_pauseAction.WasPressedThisFrame())
         {
             
-            if (!isPaused)
+            if (!_isPaused)
             {
                 Pause();
             }
@@ -33,17 +33,17 @@ public class PauseMenu : MonoBehaviour
     {
         if(Time.timeScale != 0f)
         {
-            pauseMenuUI.SetActive(true);
+            _pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
-            isPaused = true;
+            _isPaused = true;
         }
                 
     }
 
     public void Resume()
     {
-                pauseMenuUI.SetActive(false);
-                Time.timeScale = 1f;
-                isPaused = false;
+        _pauseMenuUI.SetActive(false); 
+        Time.timeScale = 1f;
+        _isPaused = false;
     }
 }

@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour, IPooledObject
     Rigidbody2D rb;
     SpriteRenderer sr;
     TrailRenderer tr;
-    [SerializeField] Health health;
     bool isHit = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -23,7 +22,7 @@ public class Projectile : MonoBehaviour, IPooledObject
 
     void OnEnable()
     {
-        Invoke(nameof(SetFalse), 5f);
+        Invoke(nameof(SetFalse), 3f);
     }
 
     void OnDisable()
@@ -43,14 +42,13 @@ public class Projectile : MonoBehaviour, IPooledObject
 
         if (hit.collider != null)
         {
+            var target = hit.collider.GetComponentInParent<Health>();
             isHit = true;
             transform.position = hit.point;
             sr.enabled = false;
             if(sr != null) sr.enabled = false;
             if (tr != null) tr.emitting = false;
-            hit.collider.SendMessage("ApplyDamage", Ammo.KineticEnergyDamage(), SendMessageOptions.DontRequireReceiver);
-            //float dmg = Ammo.GetKineticEnergy();
-            //health.TakeDamage(dmg);
+            target.ApplyRangedDamage(Ammo.Damage);
             Invoke(nameof(SetFalse), 1f);
         }
 

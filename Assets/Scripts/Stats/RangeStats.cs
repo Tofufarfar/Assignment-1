@@ -63,12 +63,13 @@ public class RangeStats : Stats
     }
     public void IncreaseProjectileFireRate(float amount)
     {
-        if(amount <= MinFireRate)
-        {
-            _generateUpgrade.RemoveFromPool(upgrade);
-        }
         ProjectileFireRate = ApplyFloatStat(ProjectileFireRate, amount, MinFireRate, 9999);
         OnRangeStatsChanged?.Invoke();
+
+        if (ProjectileFireRate <= MinFireRate)
+        {
+            _generateUpgrade.RemoveFromPoolOnMaxxedOut(UpgradeData.UpgradeCategory.Range,RangeUpgradeData.TypeOfUpgrade.FireRate);
+        }
     }
     public void IncreaseMagazineSize(int amount)
     {
@@ -79,6 +80,11 @@ public class RangeStats : Stats
     {
         ReloadSpeed = ApplyFloatStat(ReloadSpeed, amount, MinReloadSpeed, 9999);
         OnRangeStatsChanged?.Invoke();
+
+        if (ReloadSpeed <= MinReloadSpeed)
+        {
+            _generateUpgrade.RemoveFromPoolOnMaxxedOut(UpgradeData.UpgradeCategory.Range, RangeUpgradeData.TypeOfUpgrade.ReloadTime);
+        }
     }
 
     private int ApplyIntStat(int stat, int increaseAmount, int min = int.MinValue, int max = int.MaxValue)

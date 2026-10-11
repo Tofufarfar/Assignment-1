@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerStats : Stats
 {
     [SerializeField] PlayerClassData _playerUpgradeData;
+    [SerializeField] Health _hp;
 
     [field: SerializeField] public float MaxMovementSpeed { get; private set; } = 15f;
     [field: SerializeField] public int MaxVacuumEffect { get; private set; } = 100;
@@ -14,6 +15,7 @@ public class PlayerStats : Stats
     public float MovementSpeed { get; private set; }
 
     public event Action OnPlayerStatsChanged;
+    public event Action OnMaxHealthIncrease;
 
     void Awake()
     {
@@ -39,6 +41,8 @@ public class PlayerStats : Stats
     public void IncreaseMaxHealth(float amount) 
     {
         MaxHealth = ApplyFloatStat(MaxHealth, amount, 1, 9999);
+        _hp.MaxHealthIncrease(amount);
+        OnMaxHealthIncrease?.Invoke();
         OnPlayerStatsChanged?.Invoke();
     }
     public void IncreaseXPGain(int amount)
@@ -55,11 +59,21 @@ public class PlayerStats : Stats
     {
         VacuumEffect = ApplyIntStat(VacuumEffect, amount, 0, MaxVacuumEffect);
         OnPlayerStatsChanged?.Invoke();
+
+        if(VacuumEffect >= MaxVacuumEffect)
+        {
+            _generateUpgrade.RemoveFromPoolOnMaxxedOut(UpgradeData.UpgradeCategory.Player, PlayerUpgradeData.TypeOfUpgrade.Vacuum);
+        }
     }
     public void IncreaseMovementSpeed(float amount)
     {
         MovementSpeed = ApplyFloatStat(MovementSpeed, amount, 0, MaxMovementSpeed);
         OnPlayerStatsChanged?.Invoke();
+
+        if (MovementSpeed >= MaxMovementSpeed)
+        {
+            _generateUpgrade.RemoveFromPoolOnMaxxedOut(UpgradeData.UpgradeCategory.Player, PlayerUpgradeData.TypeOfUpgrade.Movement);
+        }
     }
 
 
