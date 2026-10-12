@@ -4,14 +4,12 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     Slider hpBar;
-    Health hp;
-    XP xp;
+    [SerializeField] Health hp;
+    [SerializeField] XP xp;
 
     private void Awake()
     {
         hpBar = GetComponent<Slider>();
-        hp = GetComponentInParent<Health>();
-        xp = GetComponentInParent<XP>();
         hpBar.maxValue = hp.MaxHP;
         hpBar.value = hp.MaxHP;
     }

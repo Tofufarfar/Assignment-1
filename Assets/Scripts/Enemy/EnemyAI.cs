@@ -11,10 +11,15 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
     [SerializeField] private GameObject xpPrefab;
     [SerializeField] EnemyData _enemyData;
     [SerializeField] Animator anim;
-    float _speed, _maxHP, _dmg, _angle, _currentHP, _nextAttackTime;
+    float _speed, _maxHP, _dmg, _angle, _currentHP, _nextAttackTime, _chargeCoolDown;
+    float _chargeInitiateDistance = 25f;
+    float _chargeOverShoot = 5f;
     int _score;
+    bool _isCharging, _isCharger;
+    
     Rigidbody2D _rb;
     Health _health;
+    Vector2 _chargeTarget;
     Vector3 _moveDirection;
 
     private InGameTimer _igt;
@@ -26,7 +31,9 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
         _score = _enemyData.ScoreValue;
         _maxHP = _enemyData.MaxHP;
         _dmg = _enemyData.BaseDamage;
-
+        _chargeCoolDown = _enemyData.ChargeCoolDown;
+        //_chargeDistance = _enemyData.ChargeDistance;
+        _isCharger = _enemyData.IsCharger;
         _health.SetMaxHP(_enemyData.MaxHP);
     }
 
@@ -66,6 +73,12 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
     void FixedUpdate()
     {
         _rb.linearVelocity = new Vector2(_moveDirection.x, _moveDirection.y) * _speed;
+
+        if((transform.position - _player.position).sqrMagnitude < _chargeInitiateDistance && _isCharger && !_isCharging)
+        {
+            _isCharging = true;
+            Charge();
+        }
     }
 
     void HandleDeath()
@@ -94,5 +107,17 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
     {
         _currentHP = _maxHP;
         //_rb.linearVelocity = new Vector2();
+    }
+
+    void SpeedBuildUp()
+    {
+
+    }
+
+    void Charge()
+    {
+        _chargeTarget = _player.position * _chargeOverShoot;
+        //Play charging animation
+        _isCharging = false;
     }
 }

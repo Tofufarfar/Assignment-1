@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PauseMenu : MonoBehaviour
 {
     bool _isPaused = false;
-     GameObject _pauseMenuUI;
+    [SerializeField] GameObject _pauseMenuUI;
     InputAction _pauseAction;
 
     private void Awake()

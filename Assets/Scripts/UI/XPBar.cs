@@ -6,11 +6,10 @@ public class XPBar : MonoBehaviour
 {
     [SerializeField] private Slider ExperienceBar;
     [SerializeField] private TextMeshProUGUI PlayerLevels;
-    private XP xp;
+    [SerializeField] XP xp;
 
     private void Awake()
     {
-        xp = GetComponentInParent<XP>();
         ExperienceBar.maxValue = xp.nextLevelXP;
         ExperienceBar.value = xp.currentXP;
     }
