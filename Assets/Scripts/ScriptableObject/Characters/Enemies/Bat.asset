@@ -12,13 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caf1ac144376594bab7ef1bd8fb267d, type: 3}
   m_Name: Bat
   m_EditorClassIdentifier: Assembly-CSharp::SO_Enemy
+  <EnemyDescription>k__BackingField: 
   <Type>k__BackingField: 1
   <Tag>k__BackingField: Bat
+  <ChargeCoolDown>k__BackingField: 0
+  <ChargeDistance>k__BackingField: 0
+  <ChargeDamage>k__BackingField: 0
   <AttackCooldown>k__BackingField: 0.2
   <MaxHP>k__BackingField: 1
   <MovementSpeed>k__BackingField: 1
   <BaseDamage>k__BackingField: 0.2
+  <Mass>k__BackingField: 0.2
   <ScoreValue>k__BackingField: 50
+  <IsCharger>k__BackingField: 0
   <MeleeResist>k__BackingField: 1
   <RangeResist>k__BackingField: 0
   <EnemyDamageType>k__BackingField: 0

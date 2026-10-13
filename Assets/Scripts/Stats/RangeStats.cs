@@ -4,11 +4,12 @@ using UnityEngine;
 public class RangeStats : Stats
 {
     [SerializeField] RangedWeaponData _rangedWeaponData;
+    [SerializeField] Ammo _ammo;
 
     [field: SerializeField] public float MinFireRate { get; private set; } = 0f;
     [field: SerializeField] public float MinReloadSpeed { get; private set; } = 0f;
-    public float Damage { get; private set; }
     public float ProjectileBlastRadius { get; private set; }
+    public float ProjectileDamage { get; private set; }
     public float ProjectileRange { get; private set; }
     public float ProjectileSpeed { get; private set; }
     public float ProjectileFireRate { get; private set; }
@@ -21,6 +22,7 @@ public class RangeStats : Stats
     void Awake()
     {
         ProjectileBlastRadius = _rangedWeaponData.ProjectileBlastRadius;
+        ProjectileDamage = _ammo.Damage;
         ProjectileRange = _rangedWeaponData.ProjectileRange;
         ProjectileSpeed = _rangedWeaponData.ProjectileSpeed;
         ProjectileFireRate = _rangedWeaponData.FireRate;
@@ -40,11 +42,6 @@ public class RangeStats : Stats
         }
     }
 
-    public void IncreaseDamage(float amount)
-    {
-        Damage = ApplyFloatStat(Damage, amount, 0, 9999);
-        OnRangeStatsChanged?.Invoke();
-    }
     public void IncreaseProjectileBlastRadius(float amount)
     {
         ProjectileBlastRadius = ApplyFloatStat(ProjectileBlastRadius, amount, 0, 9999);
@@ -54,6 +51,12 @@ public class RangeStats : Stats
     public void IncreaseProjectileRange(float amount)
     {
         ProjectileRange = ApplyFloatStat(ProjectileRange, amount, 0, 9999);
+        OnRangeStatsChanged?.Invoke();
+    }
+
+    public void IncreaseProjectileDamage(float amount)
+    {
+        ProjectileDamage = ApplyFloatStat(ProjectileDamage, amount, 0, 9999);
         OnRangeStatsChanged?.Invoke();
     }
     public void IncreaseProjectileSpeed(float amount)

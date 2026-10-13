@@ -15,11 +15,16 @@ MonoBehaviour:
   <EnemyDescription>k__BackingField: 
   <Type>k__BackingField: 0
   <Tag>k__BackingField: Blob
+  <ChargeCoolDown>k__BackingField: 5
+  <ChargeDistance>k__BackingField: 20
+  <ChargeDamage>k__BackingField: 2
   <AttackCooldown>k__BackingField: 0.5
   <MaxHP>k__BackingField: 3
-  <MovementSpeed>k__BackingField: 2
-  <BaseDamage>k__BackingField: 2
+  <MovementSpeed>k__BackingField: 0.5
+  <BaseDamage>k__BackingField: 1
+  <Mass>k__BackingField: 5
   <ScoreValue>k__BackingField: 100
-  <MeleeResist>k__BackingField: 0
-  <RangeResist>k__BackingField: 1
+  <IsCharger>k__BackingField: 1
+  <MeleeResist>k__BackingField: 1
+  <RangeResist>k__BackingField: 0
   <EnemyDamageType>k__BackingField: 0

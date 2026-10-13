@@ -12,13 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caf1ac144376594bab7ef1bd8fb267d, type: 3}
   m_Name: Rat
   m_EditorClassIdentifier: Assembly-CSharp::SO_Enemy
+  <EnemyDescription>k__BackingField: 
   <Type>k__BackingField: 0
   <Tag>k__BackingField: Rat
+  <ChargeCoolDown>k__BackingField: 0
+  <ChargeDistance>k__BackingField: 0
+  <ChargeDamage>k__BackingField: 0
   <AttackCooldown>k__BackingField: 0.5
   <MaxHP>k__BackingField: 1
   <MovementSpeed>k__BackingField: 2
   <BaseDamage>k__BackingField: 0.2
+  <Mass>k__BackingField: 0.2
   <ScoreValue>k__BackingField: 50
+  <IsCharger>k__BackingField: 0
   <MeleeResist>k__BackingField: 0
   <RangeResist>k__BackingField: 1
   <EnemyDamageType>k__BackingField: 0

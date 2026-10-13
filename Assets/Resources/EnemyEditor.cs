@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static EnemyData;
 
-public class UpgradeEditor : EditorWindow
+public class EnemyEditor : EditorWindow
 {
     const string ResourcesPath = "Assets/Scripts/ScriptableObject/Characters/Enemies";
 
@@ -31,7 +31,7 @@ public class UpgradeEditor : EditorWindow
 [MenuItem("BulletHell/Enemy Creator")]
     static void Open()
     {
-        var window = GetWindow<UpgradeEditor>();
+        var window = GetWindow<EnemyEditor>();
         window.titleContent = new GUIContent("Enemy Creator");
         window.minSize = new Vector2(320, 220);
     }

@@ -13,7 +13,6 @@ public class EnemyData : CharacterData
     {
         Grounded,
         Flying
-        
     }
    
     [field: SerializeField] public string EnemyDescription { get; private set; }
@@ -26,6 +25,7 @@ public class EnemyData : CharacterData
     [field: SerializeField] public float MaxHP { get; private set; }
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public float BaseDamage { get; private set; }
+    [field: SerializeField] public float Mass { get; private set; }
     [field: SerializeField] public int ScoreValue { get; private set; }
     [field: SerializeField] public bool IsCharger { get; private set; }
     [field: SerializeField] public bool MeleeResist { get; private set; }

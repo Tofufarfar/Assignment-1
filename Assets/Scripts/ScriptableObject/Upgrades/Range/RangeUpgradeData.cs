@@ -7,6 +7,7 @@ public class RangeUpgradeData : UpgradeData
     public enum TypeOfUpgrade
     {
         ProjectileBlastRadius,
+        ProjectileDamage,
         ProjectileRange,
         ProjectileSpeed,
         FireRate,
@@ -28,6 +29,9 @@ public class RangeUpgradeData : UpgradeData
                     break;
                 case TypeOfUpgrade.ProjectileRange:
                     rangedStats.IncreaseProjectileRange(UpgradeIncrement);
+                    break;
+                case TypeOfUpgrade.ProjectileDamage:
+                    rangedStats.IncreaseProjectileDamage(UpgradeIncrement);
                     break;
                 case TypeOfUpgrade.ProjectileSpeed:
                     rangedStats.IncreaseProjectileSpeed(UpgradeIncrement);

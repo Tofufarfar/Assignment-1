@@ -197,9 +197,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _player: {fileID: 2792173242432382963, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
-  xpPrefab: {fileID: 4858010506431399849, guid: 15381ffa5468a25488fd84c3940e9bc6, type: 3}
+  _xpPrefab: {fileID: 4858010506431399849, guid: 15381ffa5468a25488fd84c3940e9bc6, type: 3}
   _enemyData: {fileID: 11400000, guid: 136a24ec8a2b88047b1517fecfa76b80, type: 2}
-  anim: {fileID: -8839012157329601570}
+  _anim: {fileID: -8839012157329601570}
+  _sr: {fileID: 6350653314995186112}
 --- !u!114 &4010426250490717385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _enemyData: {fileID: 11400000, guid: 136a24ec8a2b88047b1517fecfa76b80, type: 2}
+  _enemyAI: {fileID: 5750214973207940710}
 --- !u!95 &-8839012157329601570
 Animator:
   serializedVersion: 7

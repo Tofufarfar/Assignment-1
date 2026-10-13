@@ -15,11 +15,16 @@ MonoBehaviour:
   <EnemyDescription>k__BackingField: 
   <Type>k__BackingField: 1
   <Tag>k__BackingField: BatBoss
+  <ChargeCoolDown>k__BackingField: 10
+  <ChargeDistance>k__BackingField: 75
+  <ChargeDamage>k__BackingField: 10
   <AttackCooldown>k__BackingField: 0.1
   <MaxHP>k__BackingField: 150
-  <MovementSpeed>k__BackingField: 2
-  <BaseDamage>k__BackingField: 0.2
+  <MovementSpeed>k__BackingField: 0.5
+  <BaseDamage>k__BackingField: 1
+  <Mass>k__BackingField: 1
   <ScoreValue>k__BackingField: 5000
+  <IsCharger>k__BackingField: 1
   <MeleeResist>k__BackingField: 1
   <RangeResist>k__BackingField: 0
   <EnemyDamageType>k__BackingField: 0

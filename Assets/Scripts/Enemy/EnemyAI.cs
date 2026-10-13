@@ -1,19 +1,23 @@
 using System;
 using Unity.Burst;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
 {
     [SerializeField] Transform _player;
-    [SerializeField] private GameObject xpPrefab;
+    [SerializeField] private GameObject _xpPrefab;
     [SerializeField] EnemyData _enemyData;
-    [SerializeField] Animator anim;
-    float _speed, _maxHP, _dmg, _angle, _currentHP, _nextAttackTime, _chargeCoolDown;
-    float _chargeInitiateDistance = 25f;
-    float _chargeOverShoot = 5f;
+    [SerializeField] Animator _anim;
+    [SerializeField] SpriteRenderer _sr;
+    float _speed, _maxHP, _dmg, _angle, _currentHP, _nextAttackTime, _chargeCoolDown, _chargeDamage;
+    float _mass;
+    float _chargeEndTime = 0f;
+    float _nextChargeAllowedTime = 0f;
+    float _chargeDuration = 1f;
+    float _chargeSpeed = 16f;
+    float _chargeDistance;
     int _score;
     bool _isCharging, _isCharger;
     
@@ -31,8 +35,10 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
         _score = _enemyData.ScoreValue;
         _maxHP = _enemyData.MaxHP;
         _dmg = _enemyData.BaseDamage;
+        _mass = _enemyData.Mass;
+        _chargeDamage = _enemyData.ChargeDamage;
         _chargeCoolDown = _enemyData.ChargeCoolDown;
-        //_chargeDistance = _enemyData.ChargeDistance;
+        _chargeDistance = _enemyData.ChargeDistance;
         _isCharger = _enemyData.IsCharger;
         _health.SetMaxHP(_enemyData.MaxHP);
     }
@@ -72,11 +78,20 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
     }
     void FixedUpdate()
     {
+        if(_isCharging)
+        {
+            if(Time.time >= _chargeEndTime)
+            {
+                _isCharging = false;
+                _rb.linearVelocity = Vector2.zero;
+            }
+            return;
+        }
+
         _rb.linearVelocity = new Vector2(_moveDirection.x, _moveDirection.y) * _speed;
 
-        if((transform.position - _player.position).sqrMagnitude < _chargeInitiateDistance && _isCharger && !_isCharging)
+        if((transform.position - _player.position).sqrMagnitude < _chargeDistance && _isCharger && Time.time >= _nextChargeAllowedTime)
         {
-            _isCharging = true;
             Charge();
         }
     }
@@ -85,6 +100,7 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
     {
         gameObject.SetActive(false);
         Score.Instance.AddScore(_score);
+        //TODO If boss explosion of XP gems.
         ObjectPooler.Instance.SpawnFromPool("XPGem", transform.position);
     }
 
@@ -93,8 +109,16 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
         if (collision2D.gameObject.tag == "Player" && Time.time >= _nextAttackTime)
         {
             _nextAttackTime = Time.time + _enemyData.AttackCooldown;
-            anim.SetTrigger("Attack");
+            _anim.SetTrigger("Attack");
             collision2D.gameObject.SendMessage("ApplyDamage", _dmg, SendMessageOptions.DontRequireReceiver);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && _isCharging)
+        {
+            collision.gameObject.SendMessage("ApplyDamage", _chargeDamage, SendMessageOptions.DontRequireReceiver);
         }
     }
 
@@ -103,10 +127,12 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
         //anim.SetTrigger("Hit");
     }
 
+    
+
     public void OnObjectSpawned()
     {
         _currentHP = _maxHP;
-        //_rb.linearVelocity = new Vector2();
+        //_rb.linearVelocity = Vector2.zero;
     }
 
     void SpeedBuildUp()
@@ -114,10 +140,25 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
 
     }
 
+
+
     void Charge()
     {
-        _chargeTarget = _player.position * _chargeOverShoot;
-        //Play charging animation
-        _isCharging = false;
+        _isCharging = true;
+        Vector2 dir = (_player.position - transform.position).normalized;
+        _chargeTarget = (Vector2)_player.position + dir * _mass;
+
+        Vector2 travelDir = (_chargeTarget - (Vector2)transform.position).normalized;
+        float chargeVelocity = _speed * _chargeSpeed;
+
+        float distance = Vector2.Distance(transform.position, _chargeTarget);
+        float duration = Mathf.Approximately(chargeVelocity, 0f) ? _chargeDuration : distance / chargeVelocity;
+        _chargeEndTime = Time.time + duration;
+
+        _nextChargeAllowedTime = Time.time + _chargeCoolDown;
+
+        _rb.linearVelocity = travelDir * chargeVelocity;
+
+        _anim?.SetTrigger("Attack");
     }
 }

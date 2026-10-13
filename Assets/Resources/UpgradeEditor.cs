@@ -1,131 +1,182 @@
-//using System;
-//using System.IO;
-//using UnityEditor;
-//using UnityEngine;
-//using UnityEngine.UIElements;
+using System;
+using System.IO;
+using UnityEditor;
+using UnityEditor.UIElements;
+using UnityEngine;
+using UnityEngine.UIElements;
 
-//public class UpgradeEditor : EditorWindow
-//{
-//    const string ResourcesPath = "Assets/Scripts/ScriptableObject/Characters/Enemies";
+public class UpgradeEditor : EditorWindow
+{
+    private const string BaseResourcesPath = "Assets/Scripts/ScriptableObject/Upgrades";
 
-//    TextField tagField;
-//    TextField descriptionField;
-//    [Range(0f, 5f)]
-//    FloatField attackCoolDownField;
-//    [Range(1f, 10f)]
-//    FloatField movementSpeedField;
-//    [Range(0.1f, 1000f)]
-//    FloatField baseDamageField;
-//    [Range(1, 100000)]
-//    IntegerField maxHpField;
-//    [Range(50, 10000)]
-//    IntegerField scoreValueField;
-//    Toggle meleeResistantField;
-//    Toggle rangeResistantField;
-//    EnumField enemyDamageTypeField;
-//    EnumField enemyTypeField;
-//    Label statusLabel;
+    TextField upgradeNameField;
+    EnumField categoryField;
+    EnumField rarityField;
+    FloatField incrementField;
+    TextField descriptionField;
+    ObjectField iconField;
 
+    // Specific upgrade type fields for each subclass
+    EnumField meleeTypeField;
+    EnumField rangeTypeField;
+    EnumField playerTypeField;
+    VisualElement typeFieldsContainer;
 
-//    [MenuItem("BulletHell/Upgrade")]
-//    static void Open()
-//    {
-//        var window = GetWindow<UpgradeEditor>();
-//        window.titleContent = new GUIContent("Enemy Creator");
-//        window.minSize = new Vector2(320, 220);
-//    }
+    Label statusLabel;
 
-//    void CreateGUI()
-//    {
-//        var root = rootVisualElement;
-//        root.style.paddingLeft = root.style.paddingRight = 8;
-//        root.style.paddingTop = 8;
+    [MenuItem("BulletHell/Upgrade Creator")]
+    static void Open()
+    {
+        var window = GetWindow<UpgradeEditor>();
+        window.titleContent = new GUIContent("Upgrade Creator");
+        window.minSize = new Vector2(350, 420);
+    }
 
-//        root.Add(new Label("Create a new Enemy asset")
-//        {
-//            style = { unityFontStyleAndWeight = FontStyle.Bold, marginBottom = 6 }
-//        });
+    void CreateGUI()
+    {
+        var root = rootVisualElement;
+        root.style.paddingLeft = root.style.paddingRight = 12;
+        root.style.paddingTop = 10;
 
-//        tagField = new TextField("Enemy Name");
-//        descriptionField = new TextField("Description") { multiline = true };
-//        descriptionField.style.minHeight = 60;
+        root.Add(new Label("Create a new Upgrade Asset")
+        {
+            style = { unityFontStyleAndWeight = FontStyle.Bold, fontSize = 14, marginBottom = 8 }
+        });
 
-//        attackCoolDownField = new FloatField("Attack Cooldown");
-//        movementSpeedField = new FloatField("Movement Speed");
-//        baseDamageField = new FloatField("Base Damage");
+        upgradeNameField = new TextField("Asset Name");
+        categoryField = new EnumField("Category", UpgradeData.UpgradeCategory.Melee);
+        rarityField = new EnumField("Rarity", UpgradeData.RarityType.Common);
+        incrementField = new FloatField("Upgrade Increment");
 
-//        scoreValueField = new IntegerField("Score Value");
-//        maxHpField = new IntegerField("MaxHp");
+        descriptionField = new TextField("Description") { multiline = true };
+        descriptionField.style.minHeight = 60;
 
-//        meleeResistantField = new Toggle("Melee resistant");
-//        rangeResistantField = new Toggle("Range resistant");
+        iconField = new ObjectField("Upgrade Icon")
+        {
+            objectType = typeof(Sprite)
+        };
 
-//        enemyDamageTypeField = new EnumField("Enemy Damage Type", DamageType.Ranged);
-//        enemyTypeField = new EnumField("Enemy Damage Type", EnemyType.Grounded);
+        // Initialize specific enum fields matching each subclass's TypeOfUpgrade enum
+        meleeTypeField = new EnumField("Melee Upgrade Type", MeleeUpgradeData.TypeOfUpgrade.Damage);
+        rangeTypeField = new EnumField("Range Upgrade Type", RangeUpgradeData.TypeOfUpgrade.FireRate);
+        playerTypeField = new EnumField("Player Upgrade Type", PlayerUpgradeData.TypeOfUpgrade.Health);
 
+        // Container to toggle visibility based on selected category
+        typeFieldsContainer = new VisualElement();
+        typeFieldsContainer.Add(meleeTypeField);
+        typeFieldsContainer.Add(rangeTypeField);
+        typeFieldsContainer.Add(playerTypeField);
 
-//        var createButton = new Button(CreateAsset) { text = "Create" };
-//        createButton.style.marginTop = 8;
+        // Listen for category changes to swap visible upgrade types
+        categoryField.RegisterValueChangedCallback(evt =>
+            UpdateTypeFieldVisibility((UpgradeData.UpgradeCategory)evt.newValue));
 
-//        statusLabel = new Label();
-//        statusLabel.style.marginTop = 6;
-//        statusLabel.style.whiteSpace = WhiteSpace.Normal;
+        var createButton = new Button(CreateAsset) { text = "Create Upgrade" };
+        createButton.style.marginTop = 12;
+        createButton.style.height = 30;
 
-//        root.Add(tagField);
-//        root.Add(enemyTypeField);
-//        root.Add(enemyDamageTypeField);
-//        root.Add(descriptionField);
-//        root.Add(maxHpField);
-//        root.Add(statusLabel);
-//        root.Add(attackCoolDownField);
-//        root.Add(movementSpeedField);
-//        root.Add(baseDamageField);
-//        root.Add(scoreValueField);
-//        root.Add(meleeResistantField);
-//        root.Add(rangeResistantField);
-//        root.Add(createButton);
-//    }
+        statusLabel = new Label();
+        statusLabel.style.marginTop = 6;
+        statusLabel.style.whiteSpace = WhiteSpace.Normal;
 
-//    void CreateAsset()
-//    {
+        // Add elements to root
+        root.Add(upgradeNameField);
+        root.Add(categoryField);
+        root.Add(rarityField);
+        root.Add(incrementField);
+        root.Add(typeFieldsContainer);
+        root.Add(descriptionField);
+        root.Add(iconField);
+        root.Add(createButton);
+        root.Add(statusLabel);
 
-//        var enemy = ScriptableObject.CreateInstance<EnemyData>();
-//        var so = new SerializedObject(enemy);
+        // Set initial state
+        UpdateTypeFieldVisibility((UpgradeData.UpgradeCategory)categoryField.value);
+    }
 
-//        void Set(string name, Action<SerializedProperty> assign) =>
-//            assign(so.FindProperty($"<{name}>k__BackingField"));
+    void UpdateTypeFieldVisibility(UpgradeData.UpgradeCategory category)
+    {
+        meleeTypeField.style.display = (category == UpgradeData.UpgradeCategory.Melee) ? DisplayStyle.Flex : DisplayStyle.None;
+        rangeTypeField.style.display = (category == UpgradeData.UpgradeCategory.Range) ? DisplayStyle.Flex : DisplayStyle.None;
+        playerTypeField.style.display = (category == UpgradeData.UpgradeCategory.Player) ? DisplayStyle.Flex : DisplayStyle.None;
+    }
 
-//        Set("Tag", p => p.stringValue = tagField.value);
-//        Set("EnemyDescription", p => p.stringValue = descriptionField.value);
-//        Set("MaxHP", p => p.floatValue = maxHpField.value);
-//        Set("AttackCooldown", p => p.floatValue = attackCoolDownField.value);
-//        Set("MovementSpeed", p => p.floatValue = movementSpeedField.value);
-//        Set("BaseDamage", p => p.floatValue = baseDamageField.value);
-//        Set("ScoreValue", p => p.intValue = scoreValueField.value);
-//        Set("MeleeResist", p => p.boolValue = meleeResistantField.value);
-//        Set("RangeResist", p => p.boolValue = rangeResistantField.value);
-//        Set("EnemyDamageType", p => p.enumValueIndex = Convert.ToInt32(enemyDamageTypeField.value));
-//        Set("Type", p => p.enumValueIndex = Convert.ToInt32(enemyTypeField.value));
+    void CreateAsset()
+    {
+        if (string.IsNullOrWhiteSpace(upgradeNameField.value))
+        {
+            statusLabel.text = "Asset name is required.";
+            return;
+        }
 
-//        so.ApplyModifiedPropertiesWithoutUndo();
+        var category = (UpgradeData.UpgradeCategory)categoryField.value;
+        UpgradeData upgradeAsset = null;
 
-//        if (string.IsNullOrWhiteSpace(tagField.value))
-//        {
-//            statusLabel.text = "Item name is required.";
-//            return;
-//        }
+        // Instantiate the proper subclass based on the selected category
+        switch (category)
+        {
+            case UpgradeData.UpgradeCategory.Melee:
+                upgradeAsset = ScriptableObject.CreateInstance<MeleeUpgradeData>();
+                break;
+            case UpgradeData.UpgradeCategory.Range:
+                upgradeAsset = ScriptableObject.CreateInstance<RangeUpgradeData>();
+                break;
+            case UpgradeData.UpgradeCategory.Player:
+                upgradeAsset = ScriptableObject.CreateInstance<PlayerUpgradeData>();
+                break;
+        }
 
-//        Directory.CreateDirectory(ResourcesPath);
+        if (upgradeAsset == null)
+        {
+            statusLabel.text = "Failed to create upgrade instance.";
+            return;
+        }
 
-//        string safeName = string.Join("_", tagField.value.Split(Path.GetInvalidFileNameChars()));
-//        string path = AssetDatabase.GenerateUniqueAssetPath($"{ResourcesPath}/{safeName}.asset");
+        var so = new SerializedObject(upgradeAsset);
 
-//        AssetDatabase.CreateAsset(enemy, path);
-//        AssetDatabase.SaveAssets();
-//        AssetDatabase.Refresh();
+        // Helper to target auto-property backing fields generated by [field: SerializeField]
+        void Set(string name, Action<SerializedProperty> assign)
+        {
+            var prop = so.FindProperty($"<{name}>k__BackingField");
+            if (prop != null) assign(prop);
+        }
 
-//        EditorGUIUtility.PingObject(enemy);
-//        Selection.activeObject = enemy;
-//        statusLabel.text = $"Created {path}";
-//    }
-//}
+        // Set base properties
+        Set("Rarity", p => p.enumValueIndex = Convert.ToInt32(rarityField.value));
+        Set("UpgradeIncrement", p => p.floatValue = incrementField.value);
+        Set("Category", p => p.enumValueIndex = Convert.ToInt32(categoryField.value));
+        Set("UpgradeDescription", p => p.stringValue = descriptionField.value);
+        Set("UpgradeIcon", p => p.objectReferenceValue = iconField.value);
+
+        // Set subclass-specific UpgradeType enum value
+        switch (category)
+        {
+            case UpgradeData.UpgradeCategory.Melee:
+                Set("UpgradeType", p => p.enumValueIndex = Convert.ToInt32(meleeTypeField.value));
+                break;
+            case UpgradeData.UpgradeCategory.Range:
+                Set("UpgradeType", p => p.enumValueIndex = Convert.ToInt32(rangeTypeField.value));
+                break;
+            case UpgradeData.UpgradeCategory.Player:
+                Set("UpgradeType", p => p.enumValueIndex = Convert.ToInt32(playerTypeField.value));
+                break;
+        }
+
+        so.ApplyModifiedPropertiesWithoutUndo();
+
+        // Route dynamically to subfolders: e.g., Assets/Scripts/ScriptableObject/Upgrades/Melee/
+        string targetFolderPath = $"{BaseResourcesPath}/{category}";
+        Directory.CreateDirectory(targetFolderPath);
+
+        string safeName = string.Join("_", upgradeNameField.value.Split(Path.GetInvalidFileNameChars()));
+        string path = AssetDatabase.GenerateUniqueAssetPath($"{targetFolderPath}/{safeName}.asset");
+
+        AssetDatabase.CreateAsset(upgradeAsset, path);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        EditorGUIUtility.PingObject(upgradeAsset);
+        Selection.activeObject = upgradeAsset;
+        statusLabel.text = $"Created {path}";
+    }
+}

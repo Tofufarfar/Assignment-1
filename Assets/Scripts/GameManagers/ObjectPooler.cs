@@ -16,13 +16,21 @@ public class ObjectPooler : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+        //DontDestroyOnLoad(gameObject);
+        InitializePools();
     }
     public List<Pool> pools;
-    private Dictionary<string, GameObject> prefabDictionary;
-    public Dictionary<string, List<GameObject>> poolDictionary;
+    private Dictionary<string, GameObject> prefabDictionary = new();
+    public Dictionary<string, List<GameObject>> poolDictionary = new();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void InitializePools()
     {
         poolDictionary = new Dictionary<string, List<GameObject>>();
         prefabDictionary = new Dictionary<string, GameObject>();
@@ -33,7 +41,6 @@ public class ObjectPooler : MonoBehaviour
 
             for (int i = 0; i < pool.size; i++)
             {
-
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
                 objectPool.Add(obj);

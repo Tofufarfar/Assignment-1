@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -11,16 +12,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float _baseSpawnInterval = 1f;
     [SerializeField] float _difficultySetting = 0.1f;
     [SerializeField] float _difficultyInterval = 15f;
-    [SerializeField] float _bossInterval = 10f;
+    [SerializeField] float _bossInterval;
     ObjectPooler objectPooler;
     float _nextSpawnTime = 0f;
     float _currentDifficulty = 1f;
     float _nextDifficultyIncrease;
     float _bossTimer;
+    float _weightedRoll = 0.5f;
+    float _weightedRollIncrement = 0.05f;
     int _bossIndex = 0;
-    float _weightedRoll = 0.1f;
-
-
 
     private void Start()
     {
@@ -38,23 +38,25 @@ public class EnemySpawner : MonoBehaviour
         {
             _currentDifficulty += _difficultySetting;
             _nextDifficultyIncrease += _difficultyInterval;
-            _weightedRoll += _weightedRoll;
         }
         if (currentTime >= _nextSpawnTime)
         {
             float currentSpawnInterval = _baseSpawnInterval / _currentDifficulty;
+            float max = _bossIndex == _enemyData.Length-1 ? _bossIndex :_bossIndex+1;
             _nextSpawnTime = currentSpawnInterval + currentTime;
-            float i = Mathf.Clamp(UnityEngine.Random.Range(0, _enemyData.Length-1 * _weightedRoll),0, _enemyData.Length-1);
-            objectPooler.SpawnFromPool(_enemyData[(int)i].Tag, SpawnLocation());
+
+            float index = Mathf.Clamp(Mathf.Round(UnityEngine.Random.Range(0, max + 1)*_weightedRoll),0,max);
+            objectPooler.SpawnFromPool(_enemyData[(int)index].Tag, SpawnLocation());
         }
 
-        if(_bossTimer >= _bossInterval && _enemyBossData.Length >= _bossIndex)
+        if(_bossTimer >= _bossInterval)
         {
             objectPooler.SpawnFromPool(_enemyBossData[_bossIndex].Tag,SpawnLocation());
             if(_bossIndex < _enemyBossData.Length-1)
             {
                 _bossIndex++;
             }
+            _weightedRoll += _weightedRollIncrement;
             _bossTimer = 0f;
         }
     }
