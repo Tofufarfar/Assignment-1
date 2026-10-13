@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
     [SerializeField] EnemyData _enemyData;
     [SerializeField] Animator _anim;
     [SerializeField] SpriteRenderer _sr;
+    Color _srOriginalColor;
     float _speed, _maxHP, _dmg, _angle, _currentHP, _nextAttackTime, _chargeCoolDown, _chargeDamage;
     float _mass;
     float _chargeEndTime = 0f;
@@ -41,6 +42,7 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
         _chargeDistance = _enemyData.ChargeDistance;
         _isCharger = _enemyData.IsCharger;
         _health.SetMaxHP(_enemyData.MaxHP);
+        _srOriginalColor = _sr.color;
     }
 
     void OnEnable()
@@ -132,7 +134,7 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
     public void OnObjectSpawned()
     {
         _currentHP = _maxHP;
-        //_rb.linearVelocity = Vector2.zero;
+        _sr.color = _srOriginalColor;
     }
 
     void SpeedBuildUp()

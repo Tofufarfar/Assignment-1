@@ -4683,7 +4683,7 @@ MonoBehaviour:
   _baseSpawnInterval: 1
   _difficultySetting: 0.1
   _difficultyInterval: 15
-  _bossInterval: 60
+  _bossInterval: 180
 --- !u!1 &1170211794
 GameObject:
   m_ObjectHideFlags: 0
@@ -13315,6 +13315,10 @@ PrefabInstance:
       propertyPath: _enemyAI
       value: 
       objectReference: {fileID: 5750214973207940710, guid: 7b03244394537894887fcd6483c51afd, type: 3}
+    - target: {fileID: 2170502570455167663, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
+      propertyPath: _enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: e83961613c06e68439a68aadfd4ce873, type: 2}
     - target: {fileID: 2184346273511041275, guid: 3fb05c479cb88174298c2fb0a0f3a428, type: 3}
       propertyPath: _rangeStats
       value: 

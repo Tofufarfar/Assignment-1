@@ -233,7 +233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _enemyData: {fileID: 11400000, guid: fb6f629467c95754f8c1549b850b86e3, type: 2}
-  _enemyAI: {fileID: 5750214973207940710}
+  _resistColor: {r: 0, g: 0.101960786, b: 1, a: 1}
+  _hitColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!95 &-8839012157329601570
 Animator:
   serializedVersion: 7

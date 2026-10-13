@@ -7,7 +7,12 @@ public class Health : MonoBehaviour
     public float CurrentHP { get; private set; }
     public float MaxHP { get; private set; }
 
-    EnemyData _enemyData;
+    [SerializeField] EnemyData _enemyData;
+    SpriteRenderer _sr;
+    Color _originalColor;
+    [SerializeField] Color _resistColor = Color.blue;
+    [SerializeField] Color _hitColor = Color.red;
+    Coroutine _hitCoroutine;
 
     public enum DamageType
     {
@@ -17,14 +22,19 @@ public class Health : MonoBehaviour
 
     float _meleeResist = 0.25f;
     float _rangedResist = 0.25f;
+    float _hitDuration = 0.15f;
 
     public event Action<float> HPChanged;
     public event Action<float> MaxHPChanged;
     public event Action OnDeath;
-       void Start()
+    void Start()
     {
         CurrentHP = MaxHP;
-        _enemyData = GetComponent<EnemyData>();
+
+        if(TryGetComponent<SpriteRenderer>(out _sr))
+        {
+            _originalColor = _sr.color;
+        }
     }
 
     // Update is called once per frame
@@ -38,7 +48,7 @@ public class Health : MonoBehaviour
         ApplyDamage(_enemyData.MeleeResist ? _meleeResist * damage : damage);
         if(_enemyData.MeleeResist)
         {
-            _enemyAI.OnHitResist();
+            OnHitResist();
         }
     }
 
@@ -47,7 +57,7 @@ public class Health : MonoBehaviour
         ApplyDamage(_enemyData.RangeResist ? _rangedResist * damage : damage);
         if (_enemyData.RangeResist)
         {
-            _enemyAI.OnHitResist();
+            OnHitResist();
         }
     }
     void ApplyDamage(float finalDamage)
@@ -55,6 +65,7 @@ public class Health : MonoBehaviour
 
         CurrentHP -= finalDamage;
         HPChanged?.Invoke(CurrentHP);
+        OnHitIndicator();
         if(CurrentHP <= 0)
         {
             OnDeath?.Invoke();
@@ -86,33 +97,46 @@ public class Health : MonoBehaviour
 
     public void OnHitResist()
     {
-        StartCoroutine(HitIndicatorResist());
+        if (_sr != null)
+        {
+            if (_hitCoroutine != null)
+            {
+                StopCoroutine(_hitCoroutine);
+            }
+            if(gameObject.activeSelf != false)
+            {
+                _hitCoroutine = StartCoroutine(HitIndicatorResist());
+            }
+        }
     }
 
     void OnHitIndicator()
     {
-        StartCoroutine(HitIndicator());
+        if(_hitCoroutine != null)
+        {
+            StopCoroutine(_hitCoroutine);
+        }
+        if (gameObject.activeSelf != false)
+        {
+            _hitCoroutine = StartCoroutine(HitIndicator());
+        }
     }
 
     IEnumerator HitIndicator()
     {
-        Color c = _sr.color;
-        for (float alpha = 1f; alpha >= 0; alpha -= 0.1f)
         {
-            c.a = alpha;
-            GetComponent<Renderer>().material.color = c;
-            yield return null;
+            _sr.color = _hitColor;
+            yield return new WaitForSeconds(_hitDuration);
+            _sr.color = _originalColor;
+            _hitCoroutine = null;
         }
     }
 
     IEnumerator HitIndicatorResist()
     {
-        Color c = GetComponent<Renderer>().material.color;
-        for (float alpha = 1f; alpha >= 0; alpha -= 0.1f)
-        {
-            c.a = alpha;
-            GetComponent<Renderer>().material.color = c;
-            yield return null;
-        }
+        _sr.color = _resistColor;
+        yield return new WaitForSeconds(_hitDuration);
+        _sr.color = _originalColor;
+        _hitCoroutine = null;
     }
 }
