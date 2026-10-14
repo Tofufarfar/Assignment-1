@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,45 +12,29 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Button _start, _settings, _quit, _back;
     [SerializeField] TextMeshProUGUI _startButtonText;
     [SerializeField] AudioListener _menuAudioListener;
-    [SerializeField] UnityEngine.EventSystems.EventSystem _menuEventSystem;
-    public bool IsMenuOpen => _mainMenu.activeSelf || _settingsMenu.activeSelf;
 
     void Awake()
     {
         Instance = this;
+        Time.timeScale = 0f;
     }
     public void StartGame()
     {
         HideAllMenus();
-        SetMenuSystems(false);
+        //SetMenuSystems(false);
         Time.timeScale = 1f;
         if (!GameState.HasStartedGame)
         {
             GameState.HasStartedGame = true;
-            StartCoroutine(LoadGameplay());
             
             HideAllMenus();
 
         }
         _startButtonText.text = "Resume";
     }
-
-    IEnumerator LoadGameplay()
-    {
-        yield return SceneManager.LoadSceneAsync("Gameplay", LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Gameplay"));
-    }
-
-    void SetMenuSystems(bool on)
-    {
-        if (_menuAudioListener != null) _menuAudioListener.enabled = on;
-        if (_menuEventSystem != null) _menuEventSystem.enabled = on;
-    }
-
     public void ShowMainMenu()
     {
         Time.timeScale = 0f;
-        SetMenuSystems(true);
         GoBackToMenu();
     }
 
@@ -69,7 +54,6 @@ public class MenuManager : MonoBehaviour
         _settingsMenu.SetActive(true);
         _mainMenu.SetActive(false);
     }
-
     public void Quit()
     {
         if (Application.isEditor)

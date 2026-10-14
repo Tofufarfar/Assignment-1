@@ -33,8 +33,9 @@ public class PauseMenu : MonoBehaviour
         if (_mainMenu.WasPressedThisFrame())
         {
 
-            if (MenuManager.Instance.IsMenuOpen)
+            if (!_isPaused)
             {
+                Time.timeScale = 1f;
                 MenuManager.Instance.StartGame();
             }
             else
@@ -63,7 +64,7 @@ public class PauseMenu : MonoBehaviour
         _isPaused = false;
     }
 
-    async void OpenMainMenu()
+    void OpenMainMenu()
     {
         _pauseMenuUI.SetActive(false);
         _isPaused = false;
