@@ -32,11 +32,6 @@ public class LevelUpMenu : MonoBehaviour
         _autoUpgradeButton.onClick.AddListener(ToggleAutoUpgrade);
     }
 
-    void Start()
-    {
-        HideLevelUpScreen();
-    }
-
     private void AddListenersToButtons()
     {
         if(!isAutoUpgrade)

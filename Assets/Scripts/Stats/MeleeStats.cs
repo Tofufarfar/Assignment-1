@@ -17,7 +17,6 @@ public class MeleeStats : Stats
     public event Action OnSizeStatChanged;
     void Awake()
     {
-
         Damage = _meleeWeaponData.BaseDamage;
         Size = _meleeWeaponData.WeaponSize;
         Swing = _meleeWeaponData.SwingTimer;

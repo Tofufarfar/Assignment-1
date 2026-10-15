@@ -35,12 +35,11 @@ public class PauseMenu : MonoBehaviour
 
             if (!_isPaused)
             {
-                Time.timeScale = 1f;
-                MenuManager.Instance.StartGame();
+                OpenMainMenu();
             }
             else
             {
-                OpenMainMenu();
+                MenuManager.Instance.StartGame();
             }
         }
 

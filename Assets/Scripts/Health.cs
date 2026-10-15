@@ -8,7 +8,9 @@ public class Health : MonoBehaviour
     public float MaxHP { get; private set; }
 
     [SerializeField] EnemyData _enemyData;
-    SpriteRenderer _sr;
+    [SerializeField] SpriteRenderer _sr;
+    [SerializeField] AudioClip[] _hitSound;
+    [SerializeField] AudioClip[] _hitResistSound;
     Color _originalColor;
     [SerializeField] Color _resistColor = Color.blue;
     [SerializeField] Color _hitColor = Color.red;
@@ -30,17 +32,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         CurrentHP = MaxHP;
-
-        if(TryGetComponent<SpriteRenderer>(out _sr))
-        {
-            _originalColor = _sr.color;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _originalColor = _sr.color;
     }
 
     public void ApplyMeleeDamage(float damage)
@@ -125,6 +117,7 @@ public class Health : MonoBehaviour
     IEnumerator HitIndicator()
     {
         {
+            SoundManager.Instance?.PlayRandomSound(_hitSound, transform, 1);
             _sr.color = _hitColor;
             yield return new WaitForSeconds(_hitDuration);
             _sr.color = _originalColor;
@@ -134,6 +127,7 @@ public class Health : MonoBehaviour
 
     IEnumerator HitIndicatorResist()
     {
+        SoundManager.Instance?.PlayRandomSound(_hitResistSound, transform, 1);
         _sr.color = _resistColor;
         yield return new WaitForSeconds(_hitDuration);
         _sr.color = _originalColor;

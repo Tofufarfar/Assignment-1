@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        Time.timeScale = 0f;
+        ShowMainMenu();
     }
     public void StartGame()
     {

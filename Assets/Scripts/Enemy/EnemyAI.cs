@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
     float _chargeDistance;
     int _score;
     bool _isCharging, _isCharger;
+    float _targetY, _targetX;
     
     Rigidbody2D _rb;
     Health _health;
@@ -67,15 +68,15 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
         _moveDirection = (_player.position - transform.position).normalized;
         if (_enemyData.Type == EnemyData.EnemyType.Grounded)
         {
-            float targetY = _moveDirection.x < 0 ? 180f : 0f;
-            transform.rotation = Quaternion.Euler(0, targetY, 0);
+            _targetY = _moveDirection.x < 0 ? 180f : 0f;
+            transform.rotation = Quaternion.Euler(0, _targetY, 0);
         }
         else if (_enemyData.Type == EnemyData.EnemyType.Flying)
         {
             _angle = Mathf.Atan2(_moveDirection.y, _moveDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, _angle));
-            float targetY = _moveDirection.x < 0 ? 180f : 0f;
-            transform.Rotate(new Vector3(targetY, 0, 0));
+            _targetX = _moveDirection.x < 0 ? 180f : 0f;
+            transform.Rotate(new Vector3(_targetX, 0, 0));
         }
     }
     void FixedUpdate()

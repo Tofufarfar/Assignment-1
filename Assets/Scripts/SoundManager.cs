@@ -13,7 +13,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundFXClip(AudioClip audioClip, Transform soundPos,float volume)
+    public void PlaySound(AudioClip audioClip, Transform soundPos,float volume)
     {
         AudioSource _audioSource = Instantiate(_soundObject,soundPos.position, Quaternion.identity);
 
@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
         Object.Destroy(_audioSource, clipLength);
     }
 
-    public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform soundPos, float volume)
+    public void PlayRandomSound(AudioClip[] audioClip, Transform soundPos, float volume)
     {
         AudioSource _audioSource = Instantiate(_soundObject, soundPos.position, Quaternion.identity);
         int rand = Random.Range(0, audioClip.Length);

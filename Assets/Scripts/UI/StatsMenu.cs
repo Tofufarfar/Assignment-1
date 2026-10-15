@@ -8,7 +8,6 @@ public class StatsMenu : MonoBehaviour
     [SerializeField] Button _showStats;
     [SerializeField] GameObject _panel;
     [SerializeField] TextMeshProUGUI[] _statText;
-    [SerializeField] Health _playerHealth;
     [SerializeField] PlayerStats _pStats;
     [SerializeField] RangeStats _rStats;
     [SerializeField] MeleeStats _mStats;
@@ -25,7 +24,7 @@ public class StatsMenu : MonoBehaviour
         _statText[6].text = "Quiver Size: " + _rStats.MagazineSize.ToString();
         _statText[7].text = "Vacuum Effect: " + _pStats.VacuumEffect.ToString();
         _statText[8].text = "Movement Speed: " + _pStats.MovementSpeed.ToString();
-        _statText[9].text = "Health: " + _playerHealth.CurrentHP.ToString() + " / " + _pStats.MaxHealth.ToString();
+        _statText[9].text = "Max Health: " + _pStats.MaxHealth.ToString();
     }
 
     private void OnEnable()
@@ -71,7 +70,7 @@ public class StatsMenu : MonoBehaviour
     }
     private void _pStats_OnMaxHealthIncrease()
     {
-        _statText[9].text = "Health: "+_playerHealth.CurrentHP.ToString() + " / " + _pStats.MaxHealth.ToString();
+        _statText[9].text = "Health: " + _pStats.MaxHealth.ToString();
     }
 
     public void ShowStats()
