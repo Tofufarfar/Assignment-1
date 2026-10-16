@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: UncommonSwing
   m_EditorClassIdentifier: Assembly-CSharp::MeleeUpgradeData
   <Rarity>k__BackingField: 1
-  <UpgradeIncrement>k__BackingField: 4
+  <UpgradeIncrement>k__BackingField: 8
   <Category>k__BackingField: 0
-  <UpgradeDescription>k__BackingField: Speed +4
+  <UpgradeDescription>k__BackingField: Speed +8
   <UpgradeIcon>k__BackingField: {fileID: -1097132315, guid: 8e5bdb5d3951f6f4d94c99f6e909af6f, type: 3}
   <UpgradeType>k__BackingField: 1

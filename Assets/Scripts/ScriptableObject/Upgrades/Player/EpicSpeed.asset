@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EpicSpeed
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUpgradeData
   <Rarity>k__BackingField: 3
-  <UpgradeIncrement>k__BackingField: 0.5
+  <UpgradeIncrement>k__BackingField: 0.25
   <Category>k__BackingField: 2
-  <UpgradeDescription>k__BackingField: Move Speed +5
+  <UpgradeDescription>k__BackingField: Move Speed +0.25
   <UpgradeIcon>k__BackingField: {fileID: -415928058, guid: 8e5bdb5d3951f6f4d94c99f6e909af6f, type: 3}
   <UpgradeType>k__BackingField: 0

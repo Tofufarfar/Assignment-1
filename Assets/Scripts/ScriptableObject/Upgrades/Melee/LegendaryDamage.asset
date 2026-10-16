@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LegendaryDamage
   m_EditorClassIdentifier: Assembly-CSharp::MeleeUpgradeData
   <Rarity>k__BackingField: 1
-  <UpgradeIncrement>k__BackingField: 1.6
+  <UpgradeIncrement>k__BackingField: 3.2
   <Category>k__BackingField: 0
-  <UpgradeDescription>k__BackingField: Damage +16
+  <UpgradeDescription>k__BackingField: Damage +32
   <UpgradeIcon>k__BackingField: {fileID: 2106978191, guid: 8e5bdb5d3951f6f4d94c99f6e909af6f, type: 3}
   <UpgradeType>k__BackingField: 4

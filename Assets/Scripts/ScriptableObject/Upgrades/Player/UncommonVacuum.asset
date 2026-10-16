@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: UncommonVacuum
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUpgradeData
   <Rarity>k__BackingField: 1
-  <UpgradeIncrement>k__BackingField: 2
+  <UpgradeIncrement>k__BackingField: 4
   <Category>k__BackingField: 2
-  <UpgradeDescription>k__BackingField: Vacuum +2
+  <UpgradeDescription>k__BackingField: Vacuum +4
   <UpgradeIcon>k__BackingField: {fileID: -1712657334, guid: 8e5bdb5d3951f6f4d94c99f6e909af6f, type: 3}
   <UpgradeType>k__BackingField: 3

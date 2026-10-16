@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EpicSize
   m_EditorClassIdentifier: Assembly-CSharp::MeleeUpgradeData
   <Rarity>k__BackingField: 3
-  <UpgradeIncrement>k__BackingField: 0.05
+  <UpgradeIncrement>k__BackingField: 0.1
   <Category>k__BackingField: 0
-  <UpgradeDescription>k__BackingField: Size +5
+  <UpgradeDescription>k__BackingField: Size +10
   <UpgradeIcon>k__BackingField: {fileID: -229347165, guid: 8e5bdb5d3951f6f4d94c99f6e909af6f, type: 3}
   <UpgradeType>k__BackingField: 0

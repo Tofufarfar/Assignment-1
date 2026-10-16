@@ -11,24 +11,24 @@ public class MenuManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _startButtonText;
     [SerializeField] AudioListener _menuAudioListener;
     [SerializeField] GameObject _mainMenuFirst, _settingsMenuFirst;
+    [SerializeField] HideVirtualCursor _hvc;
 
-    void Awake()
+    void Start()
     {
         Instance = this;
         ShowMainMenu();
         EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
+        _hvc.SetCursorVisibility(false);
     }
     public void StartGame()
     {
         HideAllMenus();
-        //SetMenuSystems(false);
         Time.timeScale = 1f;
         if (!GameState.HasStartedGame)
         {
             GameState.HasStartedGame = true;
-            
             HideAllMenus();
-
+            _hvc.SetCursorVisibility(true);
         }
         _startButtonText.text = "Resume";
     }
