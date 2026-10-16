@@ -17,6 +17,11 @@ public class MeleeWeapon : WeaponManager
         _slashEffectSwing.SetFloat("SlashSpeed", _meleeStats.Swing);
     }
 
+    void Update()
+    {
+
+    }
+
     private void OnEnable()
     {
         _meleeStats.OnSizeStatChanged += IncreaseSize;
