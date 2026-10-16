@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-    [SerializeField] Button _back, _confirm;
+    [SerializeField] Button _back;
     [SerializeField] Slider _master, _music, _sfx;
     [SerializeField] GameObject _mainMenu;
     SoundMixerManager _soundMixerManager;

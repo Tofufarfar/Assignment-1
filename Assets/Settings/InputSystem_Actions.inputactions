@@ -1047,7 +1047,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Pause",
+                    "action": "MainMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
