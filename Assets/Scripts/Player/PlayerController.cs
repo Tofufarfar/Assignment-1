@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour, IDamageble
 
     private void Update()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         _weapon.transform.RotateAround(transform.position, Vector3.forward, _mStats.Swing * Time.deltaTime);
     }
 
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour, IDamageble
     {
         
         Vector2 moveValue = _moveAction.ReadValue<Vector2>();
+        
         _rb.linearVelocity = moveValue * _pStats.MovementSpeed;
         
     }

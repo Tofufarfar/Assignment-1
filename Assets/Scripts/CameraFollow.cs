@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
         
     }
 
-    void Update()
+    void LateUpdate()
     {
        transform.position = new Vector3(target.transform.position.x, target.transform.position.y,offset);
     }
