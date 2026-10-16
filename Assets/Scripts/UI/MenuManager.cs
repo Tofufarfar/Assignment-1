@@ -12,11 +12,13 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Button _start, _settings, _quit, _back;
     [SerializeField] TextMeshProUGUI _startButtonText;
     [SerializeField] AudioListener _menuAudioListener;
+    [SerializeField] GameObject _mainMenuFirst, _settingsMenuFirst;
 
     void Awake()
     {
         Instance = this;
         ShowMainMenu();
+        EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
     }
     public void StartGame()
     {
@@ -35,22 +37,21 @@ public class MenuManager : MonoBehaviour
     public void ShowMainMenu()
     {
         Time.timeScale = 0f;
-        GoBackToMenu();
+        EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
+        _mainMenu.SetActive(true);
+        _settingsMenu.SetActive(false);
     }
 
     void HideAllMenus()
     {
         _mainMenu.SetActive(false);
         _settingsMenu.SetActive(false);
-    }
-    public void GoBackToMenu()
-    {
-        _mainMenu.SetActive(true);
-        _settingsMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void GoToSettings()
     {
+        EventSystem.current.SetSelectedGameObject(_settingsMenuFirst);
         _settingsMenu.SetActive(true);
         _mainMenu.SetActive(false);
     }

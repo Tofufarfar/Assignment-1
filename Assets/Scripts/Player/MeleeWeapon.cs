@@ -7,6 +7,9 @@ public class MeleeWeapon : WeaponManager
     [SerializeField] MeleeWeaponData _meleeWeaponData;
     [SerializeField] MeleeStats _meleeStats;
     [SerializeField] Animator _swordEvolve, _attackSwing, _slashEffectSwing;
+    [SerializeField] SlashScaleFollow _slashScale;
+
+    float _size;
  
     void Start()
     {
@@ -34,5 +37,7 @@ public class MeleeWeapon : WeaponManager
     void IncreaseSize()
     {
         _swordEvolve.SetFloat("Step", _meleeStats.Size);
+        _size = _swordEvolve.GetFloat("Step");
+        _slashScale.SetSizeMultiplier(_size);
     }
 }

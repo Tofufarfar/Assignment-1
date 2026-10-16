@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class LevelUpMenu : MonoBehaviour
@@ -20,10 +21,11 @@ public class LevelUpMenu : MonoBehaviour
     [SerializeField] PlayerStats _playerStats;
     [SerializeField] XP _xp;
     [SerializeField] GenerateUpgrade _generateUpgrade;
-
+    [SerializeField] GameObject _defaultButton;
 
 
     UpgradeData[] _currentOptions;
+  
 
     void Awake()
     {
@@ -74,6 +76,7 @@ public class LevelUpMenu : MonoBehaviour
         GetAndChooseUpgrade();
         if (!isAutoUpgrade)
         {
+            EventSystem.current.SetSelectedGameObject(_defaultButton);
             isLevelUpScreen = true;
             _levelUpMenuToHide.SetActive(true);
             Time.timeScale = 0f;

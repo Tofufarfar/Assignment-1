@@ -7,7 +7,7 @@ public class TileManager : MonoBehaviour
 
     float _xPosition, _yPosition;
 
-    void Update()
+    void FixedUpdate()
     {
         _xPosition = Mathf.Round(_cameraPos.position.x / _grid.cellSize.x) * _grid.cellSize.x;
         _yPosition = Mathf.Round(_cameraPos.position.y / _grid.cellSize.y) * _grid.cellSize.y;
