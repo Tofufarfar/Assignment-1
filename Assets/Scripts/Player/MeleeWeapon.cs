@@ -12,6 +12,11 @@ public class MeleeWeapon : WeaponManager
        
     }
 
+    void Update()
+    {
+
+    }
+
     private void OnEnable()
     {
         _meleeStats.OnSizeStatChanged += IncreaseSize;
