@@ -1,15 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     bool _isPaused = false;
     [SerializeField] GameObject _pauseMenuUI;
     InputAction _pauseAction;
+    InputAction _mainMenu;
 
     private void Awake()
     {
+
         _pauseAction = InputSystem.actions.FindAction("Pause");
+        _mainMenu = InputSystem.actions.FindAction("MainMenu");
     }
 
     private void Update()
@@ -26,9 +30,21 @@ public class PauseMenu : MonoBehaviour
                 Resume();
             }
         }
+        if (_mainMenu.WasPressedThisFrame())
+        {
+
+            if (!_isPaused)
+            {
+                OpenMainMenu();
+            }
+            else
+            {
+                MenuManager.Instance.StartGame();
+            }
+        }
+
     }
 
-    
     void Pause()
     {
         if(Time.timeScale != 0f)
@@ -45,5 +61,12 @@ public class PauseMenu : MonoBehaviour
         _pauseMenuUI.SetActive(false); 
         Time.timeScale = 1f;
         _isPaused = false;
+    }
+
+    void OpenMainMenu()
+    {
+        _pauseMenuUI.SetActive(false);
+        _isPaused = false;
+        MenuManager.Instance.ShowMainMenu();
     }
 }

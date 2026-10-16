@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: Future Games Assignment 1
-  defaultCursor: {fileID: 2800000, guid: 48fed3bbe7dc5ff42ba47b61d049bcd8, type: 3}
+  defaultCursor: {fileID: 2800000, guid: a7c9c508eb2d48a408d341152a2aab13, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

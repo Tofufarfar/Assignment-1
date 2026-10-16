@@ -218,6 +218,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _enemyData: {fileID: 11400000, guid: cdf8a8bca68230b4c94b368283166b77, type: 2}
+  _sr: {fileID: 6350653314995186112}
+  _hitSound:
+  - {fileID: 8300000, guid: 207a4330b5870ad45bf2b48ef3809139, type: 3}
+  - {fileID: 8300000, guid: 887658cd11c4ac64e91749e3be52d75f, type: 3}
+  - {fileID: 8300000, guid: 4c23fcbc56a0cac45a94cfde7e94441b, type: 3}
+  - {fileID: 8300000, guid: 4fa79f87e348b1b459f3064a9eed599e, type: 3}
+  - {fileID: 8300000, guid: bf95d89c433e3d94ba57993bb5b1448c, type: 3}
+  - {fileID: 8300000, guid: d1c373f241903a446879238b0464b9a2, type: 3}
+  - {fileID: 8300000, guid: 79c6f56478622354c8bb8da8e83d1f98, type: 3}
+  _hitResistSound:
+  - {fileID: 8300000, guid: 2a115818d58ad9044a2ab89eacb409f1, type: 3}
+  - {fileID: 8300000, guid: 9182229272f618a4695c7a9031d00b24, type: 3}
+  - {fileID: 8300000, guid: d0355698ba46ab249905fdd29c8f5298, type: 3}
+  - {fileID: 8300000, guid: e9e85d65d78e25d43a916ccad7bd3a4c, type: 3}
+  - {fileID: 8300000, guid: 972d91f3fdb3c044185610eec4eaed44, type: 3}
   _resistColor: {r: 0, g: 0.101960786, b: 1, a: 1}
   _hitColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!95 &-8839012157329601570

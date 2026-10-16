@@ -70,7 +70,7 @@
                     "name": "Previous",
                     "type": "Button",
                     "id": "2776c80d-3c14-4091-8c56-d04ced07a2b0",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false,
@@ -598,6 +598,16 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "MainMenu",
+                    "type": "Button",
+                    "id": "892fb919-ba39-4780-ac33-d7775e30a25c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -1025,18 +1035,7 @@
                     "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5fcf9a87-aab9-4738-8bad-12c0a70875eb",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": ";Keyboard&Mouse;Gamepad",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1051,8 +1050,6 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
-<<<<<<< Updated upstream
-=======
                 },
                 {
                     "name": "",
@@ -1064,18 +1061,6 @@
                     "action": "MainMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "49548c79-d460-48df-a5cb-1b298f5ed64d",
-                    "path": "<Gamepad>/{Back}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "MainMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
->>>>>>> Stashed changes
                 }
             ]
         }

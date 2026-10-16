@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] GameObject _player;
+    [SerializeField] Transform _player;
     [SerializeField] Health _health;
     [SerializeField] PlayerStats _pStats;
+    [SerializeField] XP _xp;
+    [SerializeField] AudioClip[] _levelUpSounds;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -22,11 +24,17 @@ public class PlayerManager : MonoBehaviour
     private void OnEnable()
     {
         _health.OnDeath += RestartGame;
+        _xp.OnPlayerLevelUp += PlayLevelUpSound;
     }
 
     private void OnDisable()
     {
         _health.OnDeath -= RestartGame;    
+    }
+
+    void PlayLevelUpSound()
+    {
+        SoundManager.Instance.PlayRandomSound(_levelUpSounds, _player, 1);
     }
     private void RestartGame()
     {
