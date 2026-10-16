@@ -9,20 +9,6 @@ public class XP : MonoBehaviour
 
     public event Action OnXPGained;
     public event Action OnPlayerLevelUp;
-    private void Awake()
-    {
-        
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void CalculateXP()
     {

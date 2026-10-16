@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeWeapon : WeaponManager
@@ -15,16 +13,6 @@ public class MeleeWeapon : WeaponManager
     {
         _attackSwing.SetFloat("AttackSpeed", _meleeStats.Swing);
         _slashEffectSwing.SetFloat("SlashSpeed", _meleeStats.Swing);
-    }
-
-    void Update()
-    {
-
-    }
-
-    void Update()
-    {
-
     }
 
     private void OnEnable()

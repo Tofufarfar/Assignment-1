@@ -6,7 +6,7 @@ public class PlayerStats : Stats
     [SerializeField] PlayerClassData _playerUpgradeData;
     [SerializeField] Health _hp;
 
-    [field: SerializeField] public float MaxMovementSpeed { get; private set; } = 15f;
+    [field: SerializeField] public float MaxMovementSpeed { get; private set; } = 5f;
     [field: SerializeField] public int MaxVacuumEffect { get; private set; } = 100;
     public float MaxHealth { get; private set; }
     public int PercentageXPGain { get; private set; }

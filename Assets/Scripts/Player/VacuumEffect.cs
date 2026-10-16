@@ -4,11 +4,6 @@ public class VacuumEffect : MonoBehaviour
 {
     [SerializeField] PlayerStats _pStats;
 
-
-    private void Start()
-    {
-        
-    }
     private void OnEnable()
     {
         _pStats.OnPlayerStatsChanged += IncreaseVacuumSize;

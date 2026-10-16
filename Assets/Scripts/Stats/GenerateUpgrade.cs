@@ -2,18 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class GenerateUpgrade : MonoBehaviour
 {
     [SerializeField] MeleeUpgradeData[] _meleeUpgradePool;
     [SerializeField] PlayerUpgradeData[] _playerUpgradePool;
     [SerializeField] RangeUpgradeData[] _rangeUpgradePool;
-
-    void Start()
-    {
-
-    }
 
     UpgradeData.RarityType RarityRoll()
     {

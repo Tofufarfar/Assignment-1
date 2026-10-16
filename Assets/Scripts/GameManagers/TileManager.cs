@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class TileManager : MonoBehaviour
 {
     [SerializeField] Transform _cameraPos;

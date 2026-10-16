@@ -1,8 +1,4 @@
-using System;
-using Unity.Burst;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
 {
@@ -48,14 +44,12 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
 
     void OnEnable()
     {
-        _health.HPChanged += OnHit;
         _health.OnDeath += HandleDeath;
     }
 
     void OnDisable()
     {
         _health.OnDeath -= HandleDeath;
-        _health.HPChanged -= OnHit;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -124,26 +118,11 @@ public class EnemyAI : MonoBehaviour, IPooledObject, IDamageble
             collision.gameObject.SendMessage("ApplyDamage", _chargeDamage, SendMessageOptions.DontRequireReceiver);
         }
     }
-
-    void OnHit(float _maxHP)
-    {
-        //anim.SetTrigger("Hit");
-    }
-
-    
-
     public void OnObjectSpawned()
     {
         _currentHP = _maxHP;
         _sr.color = _srOriginalColor;
     }
-
-    void SpeedBuildUp()
-    {
-
-    }
-
-
 
     void Charge()
     {

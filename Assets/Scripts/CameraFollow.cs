@@ -4,10 +4,6 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public float offset = -10f;
-    void Start()
-    {
-        
-    }
 
     void LateUpdate()
     {

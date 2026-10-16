@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
-
 public class ObjectPooler : MonoBehaviour
 {
     [System.Serializable]
@@ -29,7 +27,7 @@ public class ObjectPooler : MonoBehaviour
     public List<Pool> pools;
     private Dictionary<string, GameObject> prefabDictionary = new();
     public Dictionary<string, List<GameObject>> poolDictionary = new();
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void InitializePools()
     {
         poolDictionary = new Dictionary<string, List<GameObject>>();

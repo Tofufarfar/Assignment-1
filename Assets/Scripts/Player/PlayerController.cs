@@ -1,8 +1,5 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour, IDamageble
 {
@@ -33,7 +30,6 @@ public class PlayerController : MonoBehaviour, IDamageble
         _weapon.transform.RotateAround(transform.position, Vector3.forward, _mStats.Swing * Time.deltaTime);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Vector2 moveValue = _moveAction.ReadValue<Vector2>();
